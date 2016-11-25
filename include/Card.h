@@ -27,7 +27,9 @@ public:
   virtual ~Card();
     Card();
     Card(Shape);
+    Card(Card);
     Shape getShape();
+    bool compare(string,string);
 };
 
 class FigureCard : public Card {
@@ -38,6 +40,7 @@ public:
 	virtual string toString() override;
     FigureCard();// default Constructor
     FigureCard(Figure, Shape);
+    FigureCard(FigureCard);
     ~FigureCard();
 };
 
@@ -48,6 +51,7 @@ public:
 	virtual string toString() override;
     NumericCard();// default Constructor
     NumericCard(int, Shape);
+    NumericCard(NumericCard);
     ~NumericCard();
 
 };

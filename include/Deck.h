@@ -3,20 +3,25 @@
 
 #include <iostream>
 #include <queue>
+#include <string>
+
 #include "Card.h"
 
 using namespace std;
 
-class Deck {
+class Deck: public Card{
 private:
 	queue<Card*> CardDeck;// Declare here the collection of "Card *" of the deck
 public:
     Deck();
     Deck(int);
-	Deck (string deck);
-	Card* fetchCard();   //Returns the top card of the deck and remove it rom the deck
+    Deck(string deck);
+    Deck(Deck);
+    Card* fetchCard();   //Returns the top card of the deck and remove it from the deck
+    vector<Card*> dealCards();// deals card for begining of game
 	int getNumberOfCards(); // Get the number of cards in the deck
 	string toString(); // Return the cards in top-to-bottom order in a single line, cards are separated by a space ex: "12S QD AS 3H"
+    ~Deck();
 };
 
 #endif
