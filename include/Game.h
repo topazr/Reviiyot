@@ -12,12 +12,15 @@ class Game {
 private:
 	vector<Player *> players;  //The list of the players
 	Deck deck;
-	int verbal;//The deck of the game
+	int verbal;
+	int NumOfPlayers;
+	int turn;//The deck of the game
 public:
 	Game();
 	Game(char* configurationFile);
 	void init();
 	void play();
+	int Winner();
 	void printState();        //Print the state of the game as described in the assignment.
 	void printWinner();       //Print the winner of the game as describe in the assignment.
 	void printNumberOfTurns(); //Print the number of played turns at any given time.
