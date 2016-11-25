@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/topaz/Downloads/clion-2016.3/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/oshri/Downloads/clion-2016.3/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/topaz/Downloads/clion-2016.3/bin/cmake/bin/cmake -E remove -f
+RM = /home/oshri/Downloads/clion-2016.3/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/topaz/Desktop/Reviiyot
+CMAKE_SOURCE_DIR = /home/oshri/Desktop/Reviiyot/Reviiyot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/topaz/Desktop/Reviiyot/cmake-build-debug
+CMAKE_BINARY_DIR = /home/oshri/Desktop/Reviiyot/Reviiyot/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/topaz/Desktop/Reviiyot/cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/topaz/Downloads/clion-2016.3/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/oshri/Downloads/clion-2016.3/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -70,7 +70,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/topaz/Downloads/clion-2016.3/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/oshri/Downloads/clion-2016.3/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/topaz/Desktop/Reviiyot/cmake-build-debug/CMakeFiles /home/topaz/Desktop/Reviiyot/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/oshri/Desktop/Reviiyot/Reviiyot/cmake-build-debug/CMakeFiles /home/oshri/Desktop/Reviiyot/Reviiyot/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/topaz/Desktop/Reviiyot/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/oshri/Desktop/Reviiyot/Reviiyot/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,32 +123,302 @@ Reviiyot/fast:
 	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/build
 .PHONY : Reviiyot/fast
 
-main.o: main.cpp.o
+CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.o: CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.o
 
-.PHONY : main.o
+.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/main.cpp.o
-.PHONY : main.cpp.o
+CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.o
+.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.o
 
-main.i: main.cpp.i
+CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.i: CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.i
 
-.PHONY : main.i
+.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/main.cpp.i
-.PHONY : main.cpp.i
+CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.i
+.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.i
 
-main.s: main.cpp.s
+CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.s: CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.s
 
-.PHONY : main.s
+.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/main.cpp.s
-.PHONY : main.cpp.s
+CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.s
+.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.s
+
+CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.o: CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
+
+.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.o
+
+# target to build an object file
+CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
+.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
+
+CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.i: CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
+
+.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.i
+
+# target to preprocess a source file
+CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
+.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
+
+CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.s: CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
+
+.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.s
+
+# target to generate assembly for a file
+CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
+.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
+
+CMakeFiles/feature_tests.o: CMakeFiles/feature_tests.c.o
+
+.PHONY : CMakeFiles/feature_tests.o
+
+# target to build an object file
+CMakeFiles/feature_tests.c.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.c.o
+.PHONY : CMakeFiles/feature_tests.c.o
+
+CMakeFiles/feature_tests.i: CMakeFiles/feature_tests.c.i
+
+.PHONY : CMakeFiles/feature_tests.i
+
+# target to preprocess a source file
+CMakeFiles/feature_tests.c.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.c.i
+.PHONY : CMakeFiles/feature_tests.c.i
+
+CMakeFiles/feature_tests.s: CMakeFiles/feature_tests.c.s
+
+.PHONY : CMakeFiles/feature_tests.s
+
+# target to generate assembly for a file
+CMakeFiles/feature_tests.c.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.c.s
+.PHONY : CMakeFiles/feature_tests.c.s
+
+CMakeFiles/feature_tests.o: CMakeFiles/feature_tests.cxx.o
+
+.PHONY : CMakeFiles/feature_tests.o
+
+# target to build an object file
+CMakeFiles/feature_tests.cxx.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.cxx.o
+.PHONY : CMakeFiles/feature_tests.cxx.o
+
+CMakeFiles/feature_tests.i: CMakeFiles/feature_tests.cxx.i
+
+.PHONY : CMakeFiles/feature_tests.i
+
+# target to preprocess a source file
+CMakeFiles/feature_tests.cxx.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.cxx.i
+.PHONY : CMakeFiles/feature_tests.cxx.i
+
+CMakeFiles/feature_tests.s: CMakeFiles/feature_tests.cxx.s
+
+.PHONY : CMakeFiles/feature_tests.s
+
+# target to generate assembly for a file
+CMakeFiles/feature_tests.cxx.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.cxx.s
+.PHONY : CMakeFiles/feature_tests.cxx.s
+
+src/Card.o: src/Card.cpp.o
+
+.PHONY : src/Card.o
+
+# target to build an object file
+src/Card.cpp.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Card.cpp.o
+.PHONY : src/Card.cpp.o
+
+src/Card.i: src/Card.cpp.i
+
+.PHONY : src/Card.i
+
+# target to preprocess a source file
+src/Card.cpp.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Card.cpp.i
+.PHONY : src/Card.cpp.i
+
+src/Card.s: src/Card.cpp.s
+
+.PHONY : src/Card.s
+
+# target to generate assembly for a file
+src/Card.cpp.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Card.cpp.s
+.PHONY : src/Card.cpp.s
+
+src/Deck.o: src/Deck.cpp.o
+
+.PHONY : src/Deck.o
+
+# target to build an object file
+src/Deck.cpp.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Deck.cpp.o
+.PHONY : src/Deck.cpp.o
+
+src/Deck.i: src/Deck.cpp.i
+
+.PHONY : src/Deck.i
+
+# target to preprocess a source file
+src/Deck.cpp.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Deck.cpp.i
+.PHONY : src/Deck.cpp.i
+
+src/Deck.s: src/Deck.cpp.s
+
+.PHONY : src/Deck.s
+
+# target to generate assembly for a file
+src/Deck.cpp.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Deck.cpp.s
+.PHONY : src/Deck.cpp.s
+
+src/Game.o: src/Game.cpp.o
+
+.PHONY : src/Game.o
+
+# target to build an object file
+src/Game.cpp.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Game.cpp.o
+.PHONY : src/Game.cpp.o
+
+src/Game.i: src/Game.cpp.i
+
+.PHONY : src/Game.i
+
+# target to preprocess a source file
+src/Game.cpp.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Game.cpp.i
+.PHONY : src/Game.cpp.i
+
+src/Game.s: src/Game.cpp.s
+
+.PHONY : src/Game.s
+
+# target to generate assembly for a file
+src/Game.cpp.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Game.cpp.s
+.PHONY : src/Game.cpp.s
+
+src/Hand.o: src/Hand.cpp.o
+
+.PHONY : src/Hand.o
+
+# target to build an object file
+src/Hand.cpp.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Hand.cpp.o
+.PHONY : src/Hand.cpp.o
+
+src/Hand.i: src/Hand.cpp.i
+
+.PHONY : src/Hand.i
+
+# target to preprocess a source file
+src/Hand.cpp.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Hand.cpp.i
+.PHONY : src/Hand.cpp.i
+
+src/Hand.s: src/Hand.cpp.s
+
+.PHONY : src/Hand.s
+
+# target to generate assembly for a file
+src/Hand.cpp.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Hand.cpp.s
+.PHONY : src/Hand.cpp.s
+
+src/Player.o: src/Player.cpp.o
+
+.PHONY : src/Player.o
+
+# target to build an object file
+src/Player.cpp.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Player.cpp.o
+.PHONY : src/Player.cpp.o
+
+src/Player.i: src/Player.cpp.i
+
+.PHONY : src/Player.i
+
+# target to preprocess a source file
+src/Player.cpp.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Player.cpp.i
+.PHONY : src/Player.cpp.i
+
+src/Player.s: src/Player.cpp.s
+
+.PHONY : src/Player.s
+
+# target to generate assembly for a file
+src/Player.cpp.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/Player.cpp.s
+.PHONY : src/Player.cpp.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/reviiyot.o: src/reviiyot.cpp.o
+
+.PHONY : src/reviiyot.o
+
+# target to build an object file
+src/reviiyot.cpp.o:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.o
+.PHONY : src/reviiyot.cpp.o
+
+src/reviiyot.i: src/reviiyot.cpp.i
+
+.PHONY : src/reviiyot.i
+
+# target to preprocess a source file
+src/reviiyot.cpp.i:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.i
+.PHONY : src/reviiyot.cpp.i
+
+src/reviiyot.s: src/reviiyot.cpp.s
+
+.PHONY : src/reviiyot.s
+
+# target to generate assembly for a file
+src/reviiyot.cpp.s:
+	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.s
+.PHONY : src/reviiyot.cpp.s
 
 # Help Target
 help:
@@ -159,9 +429,39 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Reviiyot"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.o"
+	@echo "... CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.i"
+	@echo "... CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.s"
+	@echo "... CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.o"
+	@echo "... CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.i"
+	@echo "... CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.s"
+	@echo "... CMakeFiles/feature_tests.o"
+	@echo "... CMakeFiles/feature_tests.i"
+	@echo "... CMakeFiles/feature_tests.s"
+	@echo "... CMakeFiles/feature_tests.o"
+	@echo "... CMakeFiles/feature_tests.i"
+	@echo "... CMakeFiles/feature_tests.s"
+	@echo "... src/Card.o"
+	@echo "... src/Card.i"
+	@echo "... src/Card.s"
+	@echo "... src/Deck.o"
+	@echo "... src/Deck.i"
+	@echo "... src/Deck.s"
+	@echo "... src/Game.o"
+	@echo "... src/Game.i"
+	@echo "... src/Game.s"
+	@echo "... src/Hand.o"
+	@echo "... src/Hand.i"
+	@echo "... src/Hand.s"
+	@echo "... src/Player.o"
+	@echo "... src/Player.i"
+	@echo "... src/Player.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/reviiyot.o"
+	@echo "... src/reviiyot.i"
+	@echo "... src/reviiyot.s"
 .PHONY : help
 
 

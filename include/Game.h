@@ -11,8 +11,10 @@ using namespace std;
 class Game {
 private:
 	vector<Player *> players;  //The list of the players
-	Deck deck;                 //The deck of the game
+	Deck deck;
+	int verbal;//The deck of the game
 public:
+	Game();
 	Game(char* configurationFile);
 	void init();
 	void play();
