@@ -134,7 +134,7 @@ Deck::Deck(int N) {
     //delete temp; check if need this
 }
 
-Deck::Deck(Deck other)
+Deck::Deck(Deck &other)
     :Deck(other.toString()){
 }
 

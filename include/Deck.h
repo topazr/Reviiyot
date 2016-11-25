@@ -16,7 +16,7 @@ public:
     Deck();
     Deck(int);
     Deck(string deck);
-    Deck(Deck);
+    Deck(Deck&);
     Card* fetchCard();   //Returns the top card of the deck and remove it from the deck
     vector<Card*> dealCards();// deals card for begining of game
 	int getNumberOfCards(); // Get the number of cards in the deck
