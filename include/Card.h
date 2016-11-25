@@ -27,7 +27,7 @@ public:
   virtual ~Card();
     Card();
     Card(Shape);
-    Card(Card);
+    //Card(Card);
     Shape getShape();
     bool compare(string,string);
 };
@@ -40,7 +40,7 @@ public:
 	virtual string toString() override;
     FigureCard();// default Constructor
     FigureCard(Figure, Shape);
-    FigureCard(FigureCard);
+    //FigureCard(FigureCard);
     ~FigureCard();
 };
 
@@ -51,7 +51,7 @@ public:
 	virtual string toString() override;
     NumericCard();// default Constructor
     NumericCard(int, Shape);
-    NumericCard(NumericCard);
+    //NumericCard(NumericCard);
     ~NumericCard();
 
 };

@@ -26,6 +26,13 @@ int Player::getPosition() {
     return position;
 }
 
+string Player::printPlayer(){
+    string ans("");
+    ans.append(getName()+":");
+    ans.append(toString());
+    return ans;
+}
+
 Player::~Player() {
     // TODO Auto-generated destructor stub
 }

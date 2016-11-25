@@ -4,7 +4,20 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-	char* configurationFile = argv[1];
+	Deck decky=Deck(9);
+	cout<< decky.fetchCard()->toString();
+
+
+
+
+
+
+
+
+
+
+
+	/*char* configurationFile = argv[1];
 
 	Game game = Game(configurationFile);
 	game.init();
@@ -19,7 +32,7 @@ int main(int argc, char **argv) {
   	initializedGame.printState();
 	cout<<"----------"<<endl;
 	cout<<"Final State:"<<endl;
-	game.printState();
+	game.printState();*/
 	return 0;
 }
 

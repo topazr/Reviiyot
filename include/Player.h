@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Player : public Hand, public Card {
+class Player : public Hand{
 private:
 	string name;
     int position;
@@ -16,6 +16,7 @@ private:
 public:
 	Player();
 	Player(string, vector<Card*>,int);
+	string printPlayer();
 	~Player();
 	string getName();   //Returns the name of the player
 	int getPosition();
