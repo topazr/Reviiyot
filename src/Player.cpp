@@ -10,6 +10,7 @@
 #include "../include/Player.h"
 
 
+
 Player::Player() {
 }
 Player::Player(string newName, vector<Card*> newHand, int myPosition)
@@ -118,7 +119,7 @@ Card* PlayerType2::hasLeast(){ // if hand is always sorted no need to check type
                 tempCard=getHand().at(0)->toString().substr(0,(getHand().at(0)->toString().size())-1 );
                 index=i;
             }
-            else if(leastAmount==counter && compare(tempCard, whatCard)){
+            else if(leastAmount==counter && compare(tempCard, whatCard)){//maybe don't need this because cards are always sorted
                 whatCard = tempCard;
                 counter = 0;
                 index=i;
@@ -216,32 +217,5 @@ int PlayerType4::whoNext() {
     }
 }
 
-bool Player::compare(string str1, string str2) {
-    if(str1.at(0)=='K'){        //checks exceptions where lexicographically doesn't work
-        if(str2.at(0)=='A')
-            return true;
-        else
-            return false;
-    }
-    else if(str1.at(0)=='A'){
-        return false;
-    }
-    else if(str2.at(0)=='K'){
-        if(str1.at(0)=='A')
-            return false;
-        else
-            return true;
-    }
-    else if(str2.at(0)=='A')
-            return true;
-    else if(str1.at(0)<=9 && str1.at(0)>=0 && (str2.at(0)<=9 && str2.at(0)>=0)) {
-        int num1;
-        istringstream(str1) >> num1;
-        int num2;
-        istringstream(str2) >> num2;
-        return num1 < num2; //checks lexicographically
-    }
 
-    return str1 < str2; //checks lexicographically
-}
 

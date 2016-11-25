@@ -62,19 +62,9 @@ bool Hand::removeCard(Card &myCard) {
     if(index==-1)
         return false;//the card is not in this hand
     else {
-        vector<Card*> temp;
-        index=(int)pHand.size()-index-1;
-        while(index>0){
-            temp.push_back(*pHand.back());
-            pHand.pop_back();
-            index--;
-        }
-        pHand.pop_back();
-        while(!temp.empty()){
-            pHand.push_back(*temp.back());
-            temp.pop_back();
-        }
-        delete temp;
+        auto it=pHand.begin();
+        advance(it, index);//make sure the iterator get to the right place
+        pHand.erase(it);
     }
 
     return true;

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Player : public Hand {
+class Player : public Hand, public Card {
 private:
 	string name;
     int position;
@@ -19,7 +19,7 @@ public:
 	~Player();
 	string getName();   //Returns the name of the player
 	int getPosition();
-	bool compare(string,string);
+
 };
 
 class PlayerType1 : public Player {  //For strategy 1
