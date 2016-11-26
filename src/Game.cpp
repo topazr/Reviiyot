@@ -66,7 +66,10 @@ Game::Game(char* configurationFile): turn(0) {
 
         }
 
+Game::Game (Game& other)
+        : players((other.getPlayers())),deck(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayrs()),turn(other.getTurn())  {
 
+}
 void Game::printState()
 {
     cout<<"Turn "<<turn<<endl;
@@ -95,6 +98,7 @@ void Game::play()
     while (!Winner())
     {
         int turnToPlay=turn%NumOfPlayers;
+
         int PlayerDraw=players.at((unsigned long)turnToPlay)->playTurn(players);
         for (int i=0;i<players.at((unsigned long)PlayerDraw)->getDraw();i++)
         {
@@ -103,7 +107,7 @@ void Game::play()
 
         turn++;
     }
-    if (verbal==1) {
+    if (verbal=1) {
         printState();
     }
 
@@ -112,7 +116,7 @@ void Game::printWinner()
 {
     string winner("");
     string winner2("");
-    for (unsigned long i=0;i<NumOfPlayers;i++)
+    for (int i=0;i<NumOfPlayers;i++)
     {
         if (players.at(i)->getNumberOfCards()==0)
         {
@@ -132,11 +136,31 @@ void Game::printNumberOfTurns()
     cout<<"Number of turns: "<<turn<<endl;
 }
 
-
+vector <Player*>& Game::getPlayers()
+{
+    return players;
+}
+int Game::getVerbal()
+{
+    return verbal;
+}
+int Game::getTurn()
+{
+    return turn;
+}
+int Game::getNumOfPlayrs()
+{
+    return NumOfPlayers;
+}
+Deck& Game::getDeck()
+{
+    return deck;
+}
 
 
 
 Game::~Game() {
+
 	// TODO Auto-generated destructor stub
 }
 
