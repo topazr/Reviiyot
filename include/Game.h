@@ -24,7 +24,7 @@ public:
 	bool Winner();
     vector<Player*>& getPlayers();
     int getVerbal();
-    int getNumOfPlayrs();
+    int getNumOfPlayers();
     int getTurn();
     Deck& getDeck();
 	void printState();        //Print the state of the game as described in the assignment.

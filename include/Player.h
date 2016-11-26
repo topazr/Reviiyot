@@ -62,6 +62,7 @@ public:
 	PlayerType3();
 	PlayerType3(string, vector<Card*>&,int);
 	virtual  int playTurn(vector<Player*>&) override ;
+	void setNumOfPlayers(int);
 };
 
 class PlayerType4 : public Player {  //For strategy 4
