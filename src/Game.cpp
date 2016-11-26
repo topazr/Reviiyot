@@ -8,7 +8,7 @@
 #include "../include/Game.h"
 #include <sstream>
 
-/*Game::Game() {}
+Game::Game() {}
 Game::Game(char* configurationFile): turn(0) {
         configurationFile++;
 
@@ -23,7 +23,7 @@ Game::Game(char* configurationFile): turn(0) {
             if (i == 0) {
                 istringstream(answer.substr(0, 1)) >> verbal;
             } else if (i == 2) {
-                deck = Deck(answer);
+                deck =Deck(answer);
             } else if (i == 3) {
 
 
@@ -60,7 +60,7 @@ Game::Game(char* configurationFile): turn(0) {
 
 
                 }
-            i++;
+
             }
 
 
@@ -69,25 +69,67 @@ Game::Game(char* configurationFile): turn(0) {
 
 void Game::printState()
 {
-
+    cout<<"Turn "<<turn<<endl;
     cout<<"Deck: " <<deck.toString()<<endl;
-    for (auto it=players.begin(); it!=players.end();it++)
+    for ( int i=0;i<NumOfPlayers;i++)
     {
-        it.operator*()->toString();
+        players.at(i)->printPlayer();
         cout<<endl;
     }
 }
-int Game::Winner()
+
+bool Game::Winner()
 {
-    int winner=-1;
+    bool winner= false;
     for (auto it=players.begin(); it!=players.end();it++)
     {
        if (it.operator*()->getNumberOfCards()==0)
        {
-           winner=1;
+           winner=true;
        }
     }
     return winner;
+}
+void Game::play()
+{
+    while (!Winner())
+    {
+        int turnToPlay=turn%NumOfPlayers;
+        int PlayerDraw=players.at(turnToPlay).playTurn(players);
+        for (int i=0;i<players.at(PlayerDraw).getDraw();i++)
+        {
+            players.at(PlayerDraw)->addCard(*deck.fetchCard());
+        }
+
+        turn++;
+    }
+    if (verbal=1) {
+        printState();
+    }
+
+}
+void Game::printWinner()
+{
+    string winner("");
+    string winner2("");
+    for (int i=0;i<NumOfPlayers;i++)
+    {
+        if (players.at(i)->getNumberOfCards()==0)
+        {
+            if (winner=="")
+                winner.append(players.at(i)->getName());
+            else
+            {winner2.append("and"+players.at(i)->getName());}
+        }
+    }
+    if (winner2=="")
+        cout<<"*****The Winner is: "<<winner<<"*****"<<endl;
+    else
+        cout<<"*****The Winners are: "<<winner+winner2<<"*****"<<endl;
+}
+void Game::printNumberOfTurns()
+{
+    cout<<"Number of turns: "<<turn<<endl;
 }
 
 
@@ -97,4 +139,4 @@ int Game::Winner()
 Game::~Game() {
 	// TODO Auto-generated destructor stub
 }
-*/
+

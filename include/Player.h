@@ -58,6 +58,7 @@ public:
 	PlayerType3(string, vector<Card*>&,int, int);
     int highestVal();
 	int whoNext();
+	int playTurn(vector<Player*>& players);
 };
 
 class PlayerType4 : public Player {  //For strategy 4
