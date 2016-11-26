@@ -39,7 +39,7 @@ Game::Game(char* configurationFile): turn(0) {
         int position=0;
 
         while (!inFile.eof()) {
-        unsigned long index = line.find(" ");
+        unsigned long index = line.find("");
         string name = line.substr(0, index);
         int player=line.at(index+1)-'0';
         if (player==1){

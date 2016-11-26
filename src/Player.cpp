@@ -326,20 +326,24 @@ int PlayerType3::whoNext() {
     if (next + 1 == getPosition()) {
         if (next + 2 >= numOfPlayer) {
             next = 0;
-            return numOfPlayer - 1;
-        } else {
+            return numOfPlayer-1;
+        }
+        else {
             next = next + 2;
             return next - 2;
         }
-    } else {
-        if (next + 1 >= numOfPlayer) {
-            next = 0;
-            return numOfPlayer - 1;
-        } else {
-            next = next + 1;
-            return next - 1;
-        }
     }
+    else{
+            if (next + 1 >= numOfPlayer) {
+                next = 0;
+                return numOfPlayer - 1;
+            }
+            else {
+                next = next + 1;
+                return next - 1;
+            }
+        }
+
 }
 void PlayerType3::setNumOfPlayers(int numOfPlayers) {
     numOfPlayer=numOfPlayers;

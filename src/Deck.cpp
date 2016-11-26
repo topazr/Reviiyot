@@ -76,7 +76,7 @@ Deck::Deck(string deck) {
     }
 }
 
-Deck::Deck(int N) {
+/*Deck::Deck(int N) {
     vector<Card*> temp;
     for(int i=N; i>0; i--){
         if(i>1) {
@@ -132,7 +132,7 @@ Deck::Deck(int N) {
         temp.pop_back();
     }
     //delete temp; check if need this
-}
+}*/
 
 Deck::Deck(Deck &other)
     :Deck(other.toString()){
@@ -175,7 +175,7 @@ string Deck::toString() {
 
 return ans;
 }
-vector<Card*> Deck::dealCards() {
+vector<Card*>& Deck::dealCards() {
     vector<Card*> newHand;
     for(int i=0; i<7; i++)
         newHand.push_back(fetchCard());
