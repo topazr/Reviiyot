@@ -57,7 +57,7 @@ Game::Game(char* configurationFile): turn(0) {
 }
 
 Game::Game (Game& other)
-        : players((other.getPlayers())),deck(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayrs()),turn(other.getTurn())  {
+        : players((other.getPlayers())),deck(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayers()),turn(other.getTurn())  {
 
 }
 void Game::printState()
@@ -138,7 +138,7 @@ int Game::getTurn()
 {
     return turn;
 }
-int Game::getNumOfPlayrs()
+int Game::getNumOfPlayers()
 {
     return NumOfPlayers;
 }
