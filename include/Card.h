@@ -44,7 +44,7 @@ public:
     FigureCard(Figure, Shape);
 	FigureCard(FigureCard& other);
     ~FigureCard();
-    virtual int getType() override ;
+    virtual int getValue() override ;
 };
 
 class NumericCard : public Card {

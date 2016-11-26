@@ -53,7 +53,7 @@ FigureCard::FigureCard() {
 FigureCard::FigureCard(Figure fig, Shape shape1)
     : Card(shape1), figure(fig){
 }
-FigureCard::FigureCard(FigureCard& other):FigureCard(other.getFigure(),other.getShape()){}
+FigureCard::FigureCard(FigureCard& other):FigureCard((Figure)other.getValue(),other.getShape()){}
 string FigureCard::toString() {
     string ans="";
     Shape shape=getShape();
@@ -75,7 +75,7 @@ string FigureCard::toString() {
         ans=ans+'S';
     return ans;
 }
-int FigureCard::getType() {
+int FigureCard::getValue() {
     return figure;
 }
 

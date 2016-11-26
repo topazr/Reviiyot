@@ -10,7 +10,7 @@ Hand::Hand(const vector<Card*>& myHand)
     sort(pHand.begin(), pHand.end(), compare1);
 }
 Hand::Hand(Hand& other)
-        :Hand( *(other).getHand()){
+        :Hand(other.getHand()){
 }
 bool Hand::compare1(Card& card1, Card& card2){//compares what card is higher
     string str1=card1.toString();
