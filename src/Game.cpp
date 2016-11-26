@@ -39,7 +39,7 @@ Game::Game(char* configurationFile): turn(0) {
         int position=0;
 
         while (!inFile.eof()) {
-        unsigned long index = line.find('');
+        unsigned long index = line.find("");
         string name = line.substr(0, index);
         int player=line.at(index+1)-'0';
         if (player==1){
@@ -97,7 +97,7 @@ void Game::play()
 
         turn++;
     }
-    if (verbal=1) {
+    if (verbal==1) {
         printState();
     }
 
@@ -106,7 +106,7 @@ void Game::printWinner()
 {
     string winner("");
     string winner2("");
-    for (int i=0;i<NumOfPlayers;i++)
+    for (unsigned long i=0;i<NumOfPlayers;i++)
     {
         if (players.at(i)->getNumberOfCards()==0)
         {

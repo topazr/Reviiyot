@@ -341,23 +341,16 @@ int PlayerType3::whoNext() {
         }
 
 }
-int PlayerType3::playTurn(vector<Player*>& players)
-{
-
-
-
-
-}
 
 PlayerType4::PlayerType4() {
 }
-PlayerType4::PlayerType4(string newName, vector<Card *>& newHand, int myPosition, int numOfPlayers)
+PlayerType4::PlayerType4(string newName, vector<Card *>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
     if(myPosition==0)
         next=1;
     else
         next=0;
-    numOfPlayer=numOfPlayers;
+
 }
 
 int PlayerType4::playTurn(vector<Player *> &players) {

@@ -12,9 +12,9 @@ Hand::Hand(const vector<Card*>& myHand)
 Hand::Hand(Hand& other)
         :Hand(other.getHand()){
 }
-static bool Hand::compare1(Card& card1, Card& card2){//compares what card is higher
-    string str1=card1.toString();
-    string str2=card2.toString();
+    bool Hand::compare1(Card* card1, Card* card2){//compares what card is higher
+    string str1=card1->toString();
+    string str2=card2->toString();
     if(str1.at(0)=='K'){        //checks exceptions where lexicographically doesn't work
         if(str2.at(0)=='K')
             return str1 < str2;
