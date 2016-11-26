@@ -15,7 +15,7 @@ private:
 
 public:
 	Player();
-	Player(string, vector<Card*>,int);
+	Player(string, vector<Card*>&,int);
     Player(Player &other);
 
 	string printPlayer();
@@ -31,9 +31,10 @@ private:
 
 public:
 	PlayerType1();
-	PlayerType1(string, vector<Card*>,int);
+	PlayerType1(string, vector<Card*>&,int);
     int hasMost();
     Player* mostCards(vector<Player*>);
+
 };
 
 class PlayerType2 : public Player{  //For strategy 2
@@ -42,7 +43,7 @@ private:
 
 public:
 	PlayerType2();
-	PlayerType2(string, vector<Card*>,int);
+	PlayerType2(string, vector<Card*>&,int);
     int hasLeast();
 	Player* mostCards(vector<Player*>);
 };
@@ -54,7 +55,7 @@ private:
 	int numOfPlayer;
 public:
 	PlayerType3();
-	PlayerType3(string, vector<Card*>,int, int);
+	PlayerType3(string, vector<Card*>&,int, int);
     int highestVal();
 	int whoNext();
 };
@@ -66,7 +67,7 @@ private:
 	int numOfPlayer;
 public:
 	PlayerType4();
-	PlayerType4(string, vector<Card*>,int, int);
+	PlayerType4(string, vector<Card*>&,int, int);
     int lowestVal();
 	int whoNext();
 

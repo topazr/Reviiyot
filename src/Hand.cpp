@@ -96,8 +96,8 @@ int Hand::getNumberOfCards() {
     return (int)pHand.size();
 }
 
-vector<Card*>* Hand::getHand() {
-    return &pHand;
+vector<Card*>& Hand::getHand() {
+    return pHand;
 }
 
 Hand::~Hand() {

@@ -12,12 +12,14 @@
 
 Player::Player() {
 }
-Player::Player(string newName, vector<Card*> newHand, int myPosition)
+Player::Player(string newName, vector<Card*>& newHand, int myPosition)
         :Hand(newHand){
     name=newName;
     position=myPosition;
 }
-Player::Player(Player& other) {}
+Player::Player(Player& other)
+        : Player(other.getName(),other.getHand(),other.getPosition()){}
+
 string Player::getName() {
     return name;
 }
@@ -39,7 +41,7 @@ Player::~Player() {
 
 PlayerType1::PlayerType1() {
 }
-PlayerType1::PlayerType1(string newName, vector<Card*> newHand, int myPosition)
+PlayerType1::PlayerType1(string newName, vector<Card*>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
 
 }
@@ -94,7 +96,7 @@ Player* PlayerType1::mostCards(vector<Player *> players) {
 
 PlayerType2::PlayerType2() {
 }
-PlayerType2::PlayerType2(string newName, vector<Card *> newHand, int myPosition)
+PlayerType2::PlayerType2(string newName, vector<Card *>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
 
 }
@@ -148,7 +150,7 @@ Player* PlayerType2::mostCards(vector<Player *> players) {
 
 PlayerType3::PlayerType3() {
 }
-PlayerType3::PlayerType3(string newName, vector<Card *> newHand, int myPosition, int numOfPlayers)
+PlayerType3::PlayerType3(string newName, vector<Card *>& newHand, int myPosition, int numOfPlayers)
         :Player(newName, newHand, myPosition){
     if(myPosition==0)
         next=1;
@@ -189,7 +191,7 @@ int PlayerType3::whoNext() {
 
 PlayerType4::PlayerType4() {
 }
-PlayerType4::PlayerType4(string newName, vector<Card *> newHand, int myPosition, int numOfPlayers)
+PlayerType4::PlayerType4(string newName, vector<Card *>& newHand, int myPosition, int numOfPlayers)
         :Player(newName, newHand, myPosition){
     if(myPosition==0)
         next=1;
