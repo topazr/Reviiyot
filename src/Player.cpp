@@ -13,12 +13,14 @@
 
 Player::Player() {
 }
-Player::Player(string newName, vector<Card*> newHand, int myPosition)
+Player::Player(string newName, vector<Card*>& newHand, int myPosition)
         :Hand(newHand){
     name=newName;
     position=myPosition;
 }
-Player::Player(Player& other) {}
+Player::Player(Player& other)
+        : Player(other.getName(),other.getHand(),other.getPosition()){}
+
 string Player::getName() {
     return name;
 }
@@ -30,7 +32,7 @@ int Player::getPosition() {
 string Player::printPlayer(){
     string ans("");
     ans.append(getName()+":");
-    ans.append(toString());
+    ans.append(Hand::toString());
     return ans;
 }
 
@@ -40,7 +42,7 @@ Player::~Player() {
 
 PlayerType1::PlayerType1() {
 }
-PlayerType1::PlayerType1(string newName, vector<Card*> newHand, int myPosition)
+PlayerType1::PlayerType1(string newName, vector<Card*>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
 
 }
@@ -52,7 +54,7 @@ Card* PlayerType1::hasMost()
     int mostAmount=0;
     string whatCard="-1";
     unsigned long index;
-    unsigned long size=this.getHand();
+    unsigned long size=getHand();
     if(size>0){
         tempCard=getHand().at(0)->toString().substr(0,(getHand().at(0)->toString().length())-1 );
         counter++;
@@ -99,7 +101,7 @@ Player* PlayerType1::mostCards(vector<Player *> players) {
 
 PlayerType2::PlayerType2() {
 }
-PlayerType2::PlayerType2(string newName, vector<Card *> newHand, int myPosition)
+PlayerType2::PlayerType2(string newName, vector<Card *>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
 
 }
@@ -152,7 +154,7 @@ Player* PlayerType2::mostCards(vector<Player *> players) {
 
 PlayerType3::PlayerType3() {
 }
-PlayerType3::PlayerType3(string newName, vector<Card *> newHand, int myPosition, int numOfPlayers)
+PlayerType3::PlayerType3(string newName, vector<Card *>& newHand, int myPosition, int numOfPlayers)
         :Player(newName, newHand, myPosition){
     if(myPosition==0)
         next=1;
@@ -161,6 +163,7 @@ PlayerType3::PlayerType3(string newName, vector<Card *> newHand, int myPosition,
     numOfPlayer=numOfPlayers;
 
 }
+
 
 Card* PlayerType3::highestVal() {
     return getHand().at(getHand().size()-1);
@@ -192,7 +195,7 @@ int PlayerType3::whoNext() {
 
 PlayerType4::PlayerType4() {
 }
-PlayerType4::PlayerType4(string newName, vector<Card *> newHand, int myPosition, int numOfPlayers)
+PlayerType4::PlayerType4(string newName, vector<Card *>& newHand, int myPosition, int numOfPlayers)
         :Player(newName, newHand, myPosition){
     if(myPosition==0)
         next=1;

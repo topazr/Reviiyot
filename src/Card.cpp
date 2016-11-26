@@ -11,6 +11,8 @@ Card::Card() {
 	}
 Card::Card(Shape x):shape(x){
 }
+Card:: Card(Card& other)
+        :Card(other.getShape()){}
 
 Shape Card::getShape() {
     return shape;
@@ -51,7 +53,7 @@ FigureCard::FigureCard() {
 FigureCard::FigureCard(Figure fig, Shape shape1)
     : Card(shape1), figure(fig){
 }
-
+FigureCard::FigureCard(FigureCard& other):FigureCard(other.getFigure(),other.getShape()){}
 string FigureCard::toString() {
     string ans="";
     Shape shape=getShape();
@@ -72,6 +74,9 @@ string FigureCard::toString() {
     else if(shape==Spade)
         ans=ans+'S';
     return ans;
+}
+Figure FigureCard::getFigure(){
+    return figure;
 }
 
 
