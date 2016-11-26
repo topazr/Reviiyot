@@ -61,7 +61,7 @@ bool Hand::addCard(Card &card) {
 
 }
 bool Hand::removeCard(Card &myCard) {
-    int index=searchHand(myCard);
+    int index=searchHand(myCard.toString());
     if(index==-1)
         return false;//the card is not in this hand
     else {
@@ -99,6 +99,6 @@ vector<Card*>& Hand::getHand() {
 }
 
 Hand::~Hand() {
-	delete[] pHand; //check if vector needs [] or not
+	; //check if vector needs [] or not
 }
 

@@ -39,7 +39,7 @@ Game::Game(char* configurationFile): turn(0) {
                 }
                 NumOfPlayers=numofplayers;
                 int position = 0;
-                while (answer != nullptr) {
+                while (!answer.empty()) {
                     count = answer.find(" ");
                     string temp = answer.substr(0, count);
                     playerStrategy = answer.at(count + 1) - '0';
@@ -74,7 +74,7 @@ void Game::printState()
 {
     cout<<"Turn "<<turn<<endl;
     cout<<"Deck: " <<deck.toString()<<endl;
-    for ( int i=0;i<NumOfPlayers;i++)
+    for (unsigned long i=0;i<NumOfPlayers;i++)
     {
         players.at(i)->printPlayer();
         cout<<endl;
@@ -98,10 +98,11 @@ void Game::play()
     while (!Winner())
     {
         int turnToPlay=turn%NumOfPlayers;
-        int PlayerDraw=players.at(turnToPlay)->playTurn(players);
-        for (int i=0;i<players.at(PlayerDraw)->getDraw();i++)
+
+        int PlayerDraw=players.at((unsigned long)turnToPlay)->playTurn(players);
+        for (int i=0;i<players.at((unsigned long)PlayerDraw)->getDraw();i++)
         {
-            players.at(PlayerDraw)->addCard(*deck.fetchCard());
+            players.at((unsigned long)PlayerDraw)->addCard(*deck->fetchCard());
         }
 
         turn++;

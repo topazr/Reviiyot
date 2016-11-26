@@ -24,6 +24,7 @@ public:
 	virtual int playTurn(vector<Player*>&)=0;
 	int getDraw();
 	void setDraw(int);
+	int plays(int, Player&);
 };
 
 class PlayerType1 : public Player {  //For strategy 1
@@ -47,8 +48,7 @@ private:
 public:
 	PlayerType2();
 	PlayerType2(string, vector<Card*>&,int);
-    int hasLeast();
-	Player* mostCards(vector<Player*>);
+	virtual int playTurn(vector<Player*>&) override ;
 };
 
 class PlayerType3 : public Player {  //For strategy 3

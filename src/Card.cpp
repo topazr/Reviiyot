@@ -102,7 +102,7 @@ string NumericCard::toString() {
     return ss.str()+ans;
 }
 
-int NumericCard::getType() {
+int NumericCard::getValue() {
     return number;
 }
 
