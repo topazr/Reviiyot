@@ -55,7 +55,7 @@ public:
     NumericCard();// default Constructor
     NumericCard(int, Shape);
     //NumericCard(NumericCard);
-    virtual int getType() override ;
+    virtual int getValue() override ;
     ~NumericCard();
 
 };

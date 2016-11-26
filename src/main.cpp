@@ -3,8 +3,9 @@
 using namespace std;
 
 int main() {
-    Deck firstTry=Deck(9);
-    //cout << firstTry.toString()<< endl;
+
+    Card *cardy=new FigureCard(Ace,Club);
+    cout<<cardy->toString();
     return 0;
 
 }
