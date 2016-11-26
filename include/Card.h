@@ -13,10 +13,10 @@ enum Shape {
 };
 
 enum Figure {
-	Jack,
-	Queen,
-	King,
-	Ace
+	Jack=-2,
+	Queen=-1,
+	King=0,
+	Ace=1
 };
 
 class Card {
@@ -28,6 +28,7 @@ public:
     Card();
     Card(Shape);
     //Card(Card);
+    virtual int getValue()=0;
     Shape getShape();
     bool compare(string,string);
 };
@@ -41,6 +42,7 @@ public:
     FigureCard();// default Constructor
     FigureCard(Figure, Shape);
     //FigureCard(FigureCard);
+    virtual int getType() override ;
     ~FigureCard();
 };
 
@@ -52,6 +54,7 @@ public:
     NumericCard();// default Constructor
     NumericCard(int, Shape);
     //NumericCard(NumericCard);
+    virtual int getType() override ;
     ~NumericCard();
 
 };

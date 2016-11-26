@@ -73,6 +73,9 @@ string FigureCard::toString() {
         ans=ans+'S';
     return ans;
 }
+int FigureCard::getType() {
+    return figure;
+}
 
 
 NumericCard::NumericCard() {}
@@ -94,6 +97,10 @@ string NumericCard::toString() {
     stringstream ss;
     ss << number << endl;
     return ss.str()+ans;
+}
+
+int NumericCard::getType() {
+    return number;
 }
 
 

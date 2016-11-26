@@ -6,7 +6,6 @@
  */
 #include <string>
 #include <vector>
-#include <sstream>
 #include "../include/Player.h"
 
 
@@ -30,7 +29,7 @@ int Player::getPosition() {
 string Player::printPlayer(){
     string ans("");
     ans.append(getName()+":");
-    ans.append(toString());
+    ans.append(Hand::toString());
     return ans;
 }
 
@@ -45,43 +44,39 @@ PlayerType1::PlayerType1(string newName, vector<Card*> newHand, int myPosition)
 
 }
 
-Card* PlayerType1::hasMost()
+int PlayerType1::hasMost()//if asked from a player who won there will be error
 {
     int counter=0;
-    string tempCard;
+    int tempCard;
     int mostAmount=0;
-    string whatCard="-1";
-    unsigned long index;
-    unsigned long size=this.getHand();
+    int whatCard=-3;
+    unsigned long size=getHand()->size();
     if(size>0){
-        tempCard=getHand().at(0)->toString().substr(0,(getHand().at(0)->toString().length())-1 );
+        tempCard=getHand()->at(0)->getValue();
         counter++;
-        index=0;
     }
     for(unsigned long i=1; i<size; i++){
-        if(tempCard==getHand().at(i)->toString().substr(0,(getHand().at(i)->toString().length())-1 ))
+        if(tempCard==getHand()->at(i)->getValue())
             counter++;
         else{
-            if(mostAmount<counter){
-                whatCard=tempCard;
-                mostAmount=counter;
-                counter=1;
-                tempCard=getHand().at(i)->toString().substr(0,(getHand().at(i)->toString().length())-1 );
-                index=i;
+            if(mostAmount<counter) {
+                whatCard = tempCard;
+                mostAmount = counter;
+                counter = 1;
+                tempCard = getHand()->at(i)->getValue();
             }
-            else if(mostAmount==counter && compare(whatCard, tempCard)){
+            else if(mostAmount==counter){
                 whatCard = tempCard;
                 counter=1;
-                tempCard=getHand().at(i)->toString().substr(0,(getHand().at(i)->toString().length())-1 );
-                index=i;
+                tempCard=getHand()->at(i)->getValue();
             }
             else{
                 counter=1;
-                tempCard=getHand().at(i)->toString().substr(0,(getHand().at(i)->toString().length())-1 );
+                tempCard=getHand()->at(i)->getValue();
             }
         }
     }
-    return getHand().at(index);
+    return whatCard;
 }
 
 Player* PlayerType1::mostCards(vector<Player *> players) {
@@ -104,37 +99,38 @@ PlayerType2::PlayerType2(string newName, vector<Card *> newHand, int myPosition)
 
 }
 
-Card* PlayerType2::hasLeast(){ // if hand is always sorted no need to check type of card
+int PlayerType2::hasLeast(){ // if hand is always sorted no need to check type of card
     int counter=0;
-    string tempCard;
-    int leastAmount=5;//only 4 cards from each type
-    string whatCard="-1";
-    unsigned long index;
-    unsigned long size=getHand().size();
+    int tempCard=-5;
+    int leastAmount=0;
+    int whatCard=-3;
+    unsigned long size=getHand()->size();
     if(size>0){
-        tempCard=getHand().at(0)->toString().substr(0,(getHand().at(0)->toString().size())-1 );
+        tempCard=getHand()->at(0)->getValue();
         counter++;
-        index=0;
     }
     for(unsigned long i=1; i<size; i++){
-        if(tempCard==getHand().at(i)->toString().substr(0,(getHand().at(i)->toString().size())-1 ))
+        if(tempCard==getHand()->at(i)->getValue())
             counter++;
         else{
             if(leastAmount>counter){
                 whatCard=tempCard;
                 leastAmount=counter;
                 counter=1;
-                tempCard=getHand().at(0)->toString().substr(0,(getHand().at(0)->toString().size())-1 );
-                index=i;
+                tempCard=getHand()->at(i)->getValue();
             }
-            else if(leastAmount==counter && compare(tempCard, whatCard)){//maybe don't need this because cards are always sorted
+            else if(leastAmount==counter){
                 whatCard = tempCard;
-                counter = 0;
-                index=i;
+                counter=1;
+                tempCard=getHand()->at(i)->getValue();
+            }
+            else{
+                counter=1;
+                tempCard=getHand()->at(i)->getValue();
             }
         }
     }
-    return getHand().at(index);
+    return whatCard;
 }
 
 Player* PlayerType2::mostCards(vector<Player *> players) {
@@ -162,8 +158,9 @@ PlayerType3::PlayerType3(string newName, vector<Card *> newHand, int myPosition,
 
 }
 
-Card* PlayerType3::highestVal() {
-    return getHand().at(getHand().size()-1);
+int PlayerType3::highestVal() {
+    unsigned long size=getHand()->size();
+    return getHand()->at(size-1)->getValue();
 }
 
 int PlayerType3::whoNext() {
@@ -201,8 +198,8 @@ PlayerType4::PlayerType4(string newName, vector<Card *> newHand, int myPosition,
     numOfPlayer=numOfPlayers;
 }
 
-Card* PlayerType4::lowestVal() {
-    return getHand().at(0);
+int PlayerType4::lowestVal() {
+    return getHand()->at(0)->getValue();
 }
 
 int PlayerType4::whoNext() {

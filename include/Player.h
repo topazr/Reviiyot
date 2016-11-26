@@ -17,6 +17,7 @@ public:
 	Player();
 	Player(string, vector<Card*>,int);
     Player(Player &other);
+
 	string printPlayer();
 	~Player();
 	string getName();   //Returns the name of the player
@@ -31,7 +32,7 @@ private:
 public:
 	PlayerType1();
 	PlayerType1(string, vector<Card*>,int);
-    Card* hasMost();
+    int hasMost();
     Player* mostCards(vector<Player*>);
 };
 
@@ -42,7 +43,7 @@ private:
 public:
 	PlayerType2();
 	PlayerType2(string, vector<Card*>,int);
-    Card* hasLeast();
+    int hasLeast();
 	Player* mostCards(vector<Player*>);
 };
 
@@ -54,7 +55,7 @@ private:
 public:
 	PlayerType3();
 	PlayerType3(string, vector<Card*>,int, int);
-    Card* highestVal();
+    int highestVal();
 	int whoNext();
 };
 
@@ -66,7 +67,7 @@ private:
 public:
 	PlayerType4();
 	PlayerType4(string, vector<Card*>,int, int);
-    Card* lowestVal();
+    int lowestVal();
 	int whoNext();
 
 };
