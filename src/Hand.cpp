@@ -5,9 +5,12 @@
 
 Hand::Hand() {
 	}
-Hand::Hand(vector<Card*> myHand)
+Hand::Hand(const vector<Card*>& myHand)
 :pHand(myHand){
     sort(pHand.begin(), pHand.end(), compare1);
+}
+Hand::Hand(Hand& other)
+        :Hand( *(other).getHand()){
 }
 bool Hand::compare1(Card& card1, Card& card2){//compares what card is higher
     string str1=card1.toString();
@@ -93,8 +96,8 @@ int Hand::getNumberOfCards() {
     return (int)pHand.size();
 }
 
-vector<Card*> Hand::getHand() {
-    return pHand;
+vector<Card*>* Hand::getHand() {
+    return &pHand;
 }
 
 Hand::~Hand() {

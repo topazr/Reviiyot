@@ -18,6 +18,7 @@ Player::Player(string newName, vector<Card*> newHand, int myPosition)
     name=newName;
     position=myPosition;
 }
+Player::Player(Player& other) {}
 string Player::getName() {
     return name;
 }
@@ -51,7 +52,7 @@ Card* PlayerType1::hasMost()
     int mostAmount=0;
     string whatCard="-1";
     unsigned long index;
-    unsigned long size=getHand().size();
+    unsigned long size=this.getHand();
     if(size>0){
         tempCard=getHand().at(0)->toString().substr(0,(getHand().at(0)->toString().length())-1 );
         counter++;
