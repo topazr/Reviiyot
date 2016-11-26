@@ -11,7 +11,6 @@ class Hand {
 private:
 	vector<Card*> pHand;// Declare here the collection of "Card *" of the hand
     bool compare1(Card&, Card&);
-    int searchHand(Card&);
 
 public:
 	Hand();
@@ -22,6 +21,7 @@ public:
 	int getNumberOfCards(); // Get the number of cards in hand
 	string toString();// Return a list of the cards, separated by space, in one line, in a sorted order, ex: "2S 5D 10H"
     vector<Card*>& getHand();
+	int searchHand(string);
 };
 
 #endif
