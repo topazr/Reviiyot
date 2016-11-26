@@ -46,7 +46,7 @@ bool Card::compare(string str1, string str2) {//compares what card is higher
 }
 
 Card::~Card() {
-    // TODO Auto-generated destructor stub
+
 }
 FigureCard::FigureCard() {
 }

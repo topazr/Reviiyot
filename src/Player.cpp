@@ -236,7 +236,7 @@ Player& PlayerType1::mostCards(vector<Player *> &players) {
 
 int PlayerType1::playTurn(vector<Player *> &players) {
     int cardAsk=hasMost();
-    Player playerAsk=mostCards(players);
+    Player& playerAsk=mostCards(players);
     return plays(cardAsk, playerAsk);
     }
 
@@ -251,7 +251,7 @@ PlayerType2::PlayerType2(string newName, vector<Card *>& newHand, int myPosition
 
 int PlayerType2::playTurn(vector<Player *> & players){
     int cardAsk=hasLeast();
-    Player playerAsk=mostCards(players);
+    Player &playerAsk=mostCards(players);
     return plays(cardAsk, playerAsk);
 }
 
@@ -304,19 +304,13 @@ Player& PlayerType2::mostCards(vector<Player *> &players) {
 
 PlayerType3::PlayerType3() {
 }
-PlayerType3::PlayerType3(string newName, vector<Card *>& newHand, int myPosition, int numOfPlayers)
+PlayerType3::PlayerType3(string newName, vector<Card *>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
-    if(myPosition==0)
-        next=1;
-    else
-        next=0;
-    numOfPlayer=numOfPlayers;
-
-}
+    }
 
 int PlayerType3::playTurn(vector<Player *> &players) {
     int cardAsk=highestVal();
-    Player playerAsk=*players.at((unsigned)whoNext());
+    Player &playerAsk=*players.at((unsigned)whoNext());
     return plays(cardAsk, playerAsk);
 }
 int PlayerType3::highestVal() {
@@ -368,7 +362,7 @@ PlayerType4::PlayerType4(string newName, vector<Card *>& newHand, int myPosition
 
 int PlayerType4::playTurn(vector<Player *> &players) {
     int cardAsk=lowestVal();
-    Player playerAsk=*players.at(whoNext());
+    Player &playerAsk=*players.at(whoNext());
     return plays(cardAsk, playerAsk);
 }
 

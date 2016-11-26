@@ -60,7 +60,7 @@ private:
 	int whoNext();
 public:
 	PlayerType3();
-	PlayerType3(string, vector<Card*>&,int, int);
+	PlayerType3(string, vector<Card*>&,int);
 	virtual  int playTurn(vector<Player*>&) override ;
 };
 
@@ -73,7 +73,8 @@ private:
 	int whoNext();
 public:
 	PlayerType4();
-	PlayerType4(string, vector<Card*>&,int, int);
+	PlayerType4(string, vector<Card*>&,int);
+	void setNumOfPlayers(int);
 	virtual int playTurn(vector<Player*>&) override ;
 };
 

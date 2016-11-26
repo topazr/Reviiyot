@@ -1,22 +1,9 @@
 #include <iostream>
 #include "../include/Game.h"
-/*
+
 using namespace std;
 
 int main(int argc, char **argv) {
-	Deck decky=Deck(9);
-	cout<< decky.fetchCard()->toString();
-
-
-
-
-
-
-
-
-
-
-
 	char* configurationFile = argv[1];
 
 	Game game = Game(configurationFile);
@@ -36,4 +23,3 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
-*/
