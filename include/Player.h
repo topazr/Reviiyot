@@ -16,6 +16,7 @@ private:
 public:
 	Player();
 	Player(string, vector<Card*>,int);
+    Player(Player &other);
 	string printPlayer();
 	~Player();
 	string getName();   //Returns the name of the player
