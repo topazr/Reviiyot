@@ -332,9 +332,6 @@ int PlayerType3::whoNext() {
 int PlayerType3::playTurn(vector<Player*>& players)
 {
 
-
-
-
 }
 
 PlayerType4::PlayerType4() {

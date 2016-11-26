@@ -183,6 +183,6 @@ vector<Card*>& Deck::dealCards() {
 }
 
 Deck::~Deck() {
-	// TODO Auto-generated destructor stub
+
 }
 
