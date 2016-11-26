@@ -6,65 +6,55 @@
  */
 
 #include "../include/Game.h"
-#include <sstream>
+#include <fstream>
 
 Game::Game() {}
 Game::Game(char* configurationFile): turn(0) {
-        configurationFile++;
+       ifstream inFile;
+        inFile.open(configurationFile);
 
-        for (int i=0;i<4;i++) {
-            string answer("");
-            while (*configurationFile != '\n') {
-                configurationFile++;
-            }
-            while (*configurationFile != '#' && *configurationFile != nullptr) {
-                answer.append(configurationFile);
-            }
-            if (i == 0) {
-                istringstream(answer.substr(0, 1)) >> verbal;
-            } else if (i == 2) {
-                deck =Deck(answer);
-            } else if (i == 3) {
-
-
-                unsigned long count = 0;
-
-                int playerStrategy;
-                int numofplayers = 1;
-                while (answer.at(count) != nullptr) {
-                    if (answer.at(count) == '\n') {
-                        numofplayers++;
-                    }
-                    count++;
+       string line;
+       int count=0;
+       while (count<4)
+       {
+           getline(inFile,line);
+           if (line.at(0)=='#') {
+               getline(inFile,line);
+                while (line.length()==0)
+                {
+                    getline(inFile,line);
                 }
-                NumOfPlayers=numofplayers;
-                int position = 0;
-                while (!answer.empty()) {
-                    count = answer.find(" ");
-                    string temp = answer.substr(0, count);
-                    playerStrategy = answer.at(count + 1) - '0';
-                    if (playerStrategy == 1) {
-                        players.push_back(new PlayerType1(temp, deck.dealCards(), position));
-                    } else if (playerStrategy == 2) {
-                        players.push_back(new PlayerType2(temp, deck.dealCards(), position));
-                    } else if (playerStrategy == 3) {
-                        players.push_back(new PlayerType3(temp, deck.dealCards(), position, numofplayers));
-                    } else if (playerStrategy == 4) {
-                        players.push_back(new PlayerType4(temp, deck.dealCards(), position, numofplayers));
-                    }
-                    position++;
-                    answer=answer.substr(count+1);
-                    if (answer.at(0)=='\n'){
-                        answer.substr(0);}
+                if (count==0){
+                    verbal=line.at(0)-'0';}
+               else if (count==2)
+                {
+                    deck=Deck(line);
                 }
 
 
-                }
+           }
+           count++;
 
-            }
+       }
+        int position=0;
 
-
-        }
+        while (!inFile.eof()) {
+        unsigned long index = line.find('');
+        string name = line.substr(0, index);
+        int player=line.at(index+1)-'0';
+        if (player==1){
+            players.push_back(new PlayerType1(name,deck.dealCards(),position));}
+            if (player==2){
+                players.push_back(new PlayerType2(name,deck.dealCards(),position));}
+            if (player==3){
+                players.push_back(new PlayerType3(name,deck.dealCards(),position));}
+            if (player==4){
+                players.push_back(new PlayerType4(name,deck.dealCards(),position));}
+        position++;
+        getline(inFile,line);
+    }
+    NumOfPlayers=position+1;
+}
 
 Game::Game (Game& other)
         : players((other.getPlayers())),deck(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayrs()),turn(other.getTurn())  {
@@ -102,7 +92,7 @@ void Game::play()
         int PlayerDraw=players.at((unsigned long)turnToPlay)->playTurn(players);
         for (int i=0;i<players.at((unsigned long)PlayerDraw)->getDraw();i++)
         {
-            players.at((unsigned long)PlayerDraw)->addCard(*deck->fetchCard());
+            players.at((unsigned long)PlayerDraw)->addCard(*deck.fetchCard());
         }
 
         turn++;
