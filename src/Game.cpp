@@ -23,7 +23,7 @@ Game::Game(char* configurationFile): turn(0) {
             if (i == 0) {
                 istringstream(answer.substr(0, 1)) >> verbal;
             } else if (i == 2) {
-                deck =new Deck(answer);
+                deck =Deck(answer);
             } else if (i == 3) {
 
 
@@ -44,13 +44,13 @@ Game::Game(char* configurationFile): turn(0) {
                     string temp = answer.substr(0, count);
                     playerStrategy = answer.at(count + 1) - '0';
                     if (playerStrategy == 1) {
-                        players.push_back(new PlayerType1(temp, deck->dealCards(), position));
+                        players.push_back(new PlayerType1(temp, deck.dealCards(), position));
                     } else if (playerStrategy == 2) {
-                        players.push_back(new PlayerType2(temp, deck->dealCards(), position));
+                        players.push_back(new PlayerType2(temp, deck.dealCards(), position));
                     } else if (playerStrategy == 3) {
-                        players.push_back(new PlayerType3(temp, deck->dealCards(), position, numofplayers));
+                        players.push_back(new PlayerType3(temp, deck.dealCards(), position, numofplayers));
                     } else if (playerStrategy == 4) {
-                        players.push_back(new PlayerType4(temp, deck->dealCards(), position, numofplayers));
+                        players.push_back(new PlayerType4(temp, deck.dealCards(), position, numofplayers));
                     }
                     position++;
                     answer=answer.substr(count+1);
@@ -70,7 +70,7 @@ Game::Game(char* configurationFile): turn(0) {
 void Game::printState()
 {
     cout<<"Turn "<<turn<<endl;
-    cout<<"Deck: " <<deck->toString()<<endl;
+    cout<<"Deck: " <<deck.toString()<<endl;
     for (unsigned long i=0;i<NumOfPlayers;i++)
     {
         players.at(i)->printPlayer();
@@ -98,7 +98,7 @@ void Game::play()
         int PlayerDraw=players.at((unsigned long)turnToPlay)->playTurn(players);
         for (int i=0;i<players.at((unsigned long)PlayerDraw)->getDraw();i++)
         {
-            players.at((unsigned long)PlayerDraw)->addCard(*deck->fetchCard());
+            players.at((unsigned long)PlayerDraw)->addCard(*deck.fetchCard());
         }
 
         turn++;

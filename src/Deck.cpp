@@ -31,7 +31,7 @@ Deck::Deck(string deck) {
                 CardDeck.push(new NumericCard(num,Heart));
             else if(number.at(number.length()-1)=='S')
                 CardDeck.push(new NumericCard(num,Spade));
-            delete number;
+
         }
         else {
             if (deck.at(0) == 'J') {
@@ -175,7 +175,7 @@ string Deck::toString() {
 
 return ans;
 }
-vector<Card*>& Deck::dealCards() {
+vector<Card*> Deck::dealCards() {
     vector<Card*> newHand;
     for(int i=0; i<7; i++)
         newHand.push_back(fetchCard());

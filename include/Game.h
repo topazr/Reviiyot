@@ -11,7 +11,7 @@ using namespace std;
 class Game {
 private:
 	vector<Player *> players;  //The list of the players
-	Deck *deck;
+	Deck deck;
 	int verbal;
 	int NumOfPlayers;
 	int turn;//The deck of the game
