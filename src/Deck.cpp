@@ -31,7 +31,7 @@ Deck::Deck(string deck) {
                 CardDeck.push(new NumericCard(num,Heart));
             else if(number.at(number.length()-1)=='S')
                 CardDeck.push(new NumericCard(num,Spade));
-            delete number;
+            delete *number;
         }
         else {
             if (deck.at(0) == 'J') {

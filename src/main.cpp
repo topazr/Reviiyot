@@ -1,6 +1,9 @@
 #include <iostream>
+#include "../include/Deck.h"
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Deck firstTry=Deck(9);
+    //cout << firstTry.toString()<< endl;
     return 0;
 }

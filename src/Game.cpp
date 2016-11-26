@@ -8,7 +8,7 @@
 #include "../include/Game.h"
 #include <sstream>
 
-Game::Game() {}
+/*Game::Game() {}
 Game::Game(char* configurationFile): turn(0) {
         configurationFile++;
 
@@ -97,4 +97,4 @@ int Game::Winner()
 Game::~Game() {
 	// TODO Auto-generated destructor stub
 }
-
+*/

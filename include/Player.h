@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Player : public Hand{
+class Player : public Hand, public Card{
 private:
 	string name;
     int position;
