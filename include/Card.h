@@ -28,6 +28,8 @@ public:
     Card();
     Card(Shape);
 	Card(Card& other);
+	Card&operator=(Card& other);
+	Card&operator=(Card&& other);
 
     virtual int getValue()=0;
     Shape getShape();
@@ -43,8 +45,9 @@ public:
     FigureCard();// default Constructor
     FigureCard(Figure, Shape);
 	FigureCard(FigureCard& other);
-    ~FigureCard();
-    virtual int getValue() override ;
+	FigureCard&operator=(FigureCard& other);
+	FigureCard&operator=(FigureCard&& other);
+	virtual int getValue() override ;
 };
 
 class NumericCard : public Card {
@@ -52,8 +55,9 @@ private:
 	int number;
 public:
 	virtual string toString() override;
-    NumericCard();// default Constructor
-    NumericCard(int, Shape);
+	NumericCard();// default Constructor
+	NumericCard(int, Shape);
+    ~FigureCard();
     //NumericCard(NumericCard);
     virtual int getValue() override ;
     ~NumericCard();

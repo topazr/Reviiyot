@@ -137,8 +137,33 @@ Deck::Deck(string deck) {
 Deck::Deck(Deck &other)
     :Deck(other.toString()){
 }
+Deck::Deck(Deck &&other)
+{
+    this->getcardDeck()=other.getcardDeck();
+    other.getcardDeck()= nullptr;
+}
+Deck& Deck::operator=(const Deck &&other)
+{
+    if (this!=&other)
+    {
+        this->getcardDeck()=other.getcardDeck();
+        other.getcardDeck()= nullptr;
+    }
 
+}
+Deck& Deck::operator=(const Deck &other)
+{
+    if (this!=&other)
+    {
+        Deck* temp= new Deck(other);
+        this=temp;
 
+    }
+    return *this;
+}
+queue<Card*>& Deck::getcardDeck() const {
+        return CardDeck;
+}
 Card* Deck::fetchCard() {
     Card *ans= CardDeck.front();
     CardDeck.pop();

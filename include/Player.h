@@ -19,10 +19,10 @@ public:
     Player(Player &other);
 	string printPlayer();
 	~Player();
-	string getName();   //Returns the name of the player
-	int getPosition();
+	string getName() const ;   //Returns the name of the player
+	int getPosition()const ;
 	virtual int playTurn(vector<Player*>&)=0;
-	int getDraw();
+	int getDraw() const ;
 	void setDraw(int);
 	int plays(int, Player&);
 };

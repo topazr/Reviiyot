@@ -17,6 +17,10 @@ public:
     Deck(int);
     Deck(string deck);
     Deck(Deck& other);
+	Deck(Deck&& other);
+	Deck& operator=(const Deck& other);
+	Deck& operator=(const Deck&& other);
+	queue<Card*>& getcardDeck()const;
     Card* fetchCard();   //Returns the top card of the deck and remove it from the deck
     vector<Card*>& dealCards();// deals card for beginning of game
 	int getNumberOfCards(); // Get the number of cards in the deck

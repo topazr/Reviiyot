@@ -12,6 +12,24 @@ Hand::Hand(const vector<Card*>& myHand)
 Hand::Hand(Hand& other)
         :Hand(other.getHand()){
 }
+Hand& Hand::operator=(const Hand &other)
+{
+    if (this!=&other)
+    {
+        this=new Hand(other);
+    }
+    return *this;
+}
+Hand& Hand::operator=(const Hand &&other)
+{
+    if (this!=&other)
+    {
+        this->getHand()=other.getHand();
+        other.getHand()= nullptr;
+    }
+    return *this;
+
+}
     bool Hand::compare1(Card* card1, Card* card2){//compares what card is higher
     string str1=card1->toString();
     string str2=card2->toString();
@@ -94,11 +112,11 @@ int Hand::getNumberOfCards() {
     return (int)pHand.size();
 }
 
-vector<Card*>& Hand::getHand() {
+vector<Card*>& Hand::getHand()const {
     return pHand;
 }
 
 Hand::~Hand() {
-	; //check if vector needs [] or not
+	delete &pHand;
 }
 

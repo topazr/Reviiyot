@@ -22,18 +22,18 @@ Player::Player(string newName, vector<Card*>& newHand, int myPosition)
 Player::Player(Player& other)
         : Player(other.getName(),other.getHand(),other.getPosition()){}
 
-string Player::getName() {
+string Player::getName() const {
     return name;
 }
 
-int Player::getPosition() {
+int Player::getPosition() const {
     return position;
 }
 
-int Player::getDraw() {
+int Player::getDraw() const {
     return draw;
 }
-void Player::setDraw(int num) {
+void Player::setDraw(int num)  {
     draw=num;
 }
 int Player::plays(int cardAsk, Player &playerAsk) {

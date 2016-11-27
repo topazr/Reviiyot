@@ -150,7 +150,7 @@ Deck& Game::getDeck()
 
 
 Game::~Game() {
-
+    delete (&players);
 	// TODO Auto-generated destructor stub
 }
 
