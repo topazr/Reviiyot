@@ -16,7 +16,7 @@ Hand& Hand::operator=(const Hand &other)
 {
     if (this!=&other)
     {
-        this=new Hand(other);
+        pHand=other.getHand();
     }
     return *this;
 }
@@ -93,8 +93,8 @@ bool Hand::removeCard(Card &myCard) {
 }
 int Hand::searchHand(string myCard) {//searches hand : returns -1 if card not found otherwise the index
     int size =(int)pHand.size();
-    for (int i = 0; i < size; i++)
-        if(pHand.at(i)->toString()==myCard)
+    for (int i = 0; i < size; i++) {
+        if (pHand.at(i)->toString() == myCard)
             return i;
     }
     return -1;
