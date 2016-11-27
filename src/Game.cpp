@@ -11,29 +11,28 @@
 Game::Game() {}
 Game::Game(char* configurationFile): turn(0) {
        ifstream inFile;
-        inFile.open(configurationFile);
+    inFile.open(configurationFile);
 
        string line;
        int count=0;
        while (count<4)
        {
            getline(inFile,line);
-           if (line.at(0)=='#') {
+           if (line.length()!=0 && line.at(0)=='#') {
                getline(inFile,line);
-                while (line.length()==0)
-                {
-                    getline(inFile,line);
-                }
+               while (line.length()==0)
+               {
+                   getline(inFile,line);
+               }
                 if (count==0){
-                    verbal=line.at(0)-'0';}
+                    verbal=line.at(0)-'0';
+                }
                else if (count==2)
                 {
                     deck=Deck(line);
                 }
-
-
+                count++;
            }
-           count++;
 
        }
         int position=0;

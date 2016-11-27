@@ -10,6 +10,7 @@
 #include <sstream>
 
 Deck::Deck() {
+
 }
 
 Deck::Deck(string deck) {
@@ -22,7 +23,6 @@ Deck::Deck(string deck) {
                 number=number+deck.at(i);
             }
             deck=deck.substr(i+1,deck.length()-i+1);//cuts the first card from the string
-            //cout<<deck.at(0);
             istringstream(number) >>num;
             if(number.at(number.length()-1)=='C')
                 CardDeck.push(new NumericCard(num,Club));
@@ -83,63 +83,7 @@ Deck::Deck(string deck) {
     }
 }
 
-/*Deck::Deck(int N) {
-    vector<Card*> temp;
-    for(int i=N; i>0; i--){
-        if(i>1) {
-            Card *currentCard = new NumericCard(i,Club);
-            temp.push_back(currentCard);
-            currentCard = new NumericCard(i,Heart);
-            temp.push_back(currentCard);
-            currentCard = new NumericCard(i,Spade);
-            temp.push_back(currentCard);
-            currentCard = new NumericCard(i,Diamond);
-            temp.push_back(currentCard);
-        }
-        else{
-            Card *currentCard = new FigureCard(Jack, Club);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Jack, Diamond);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Jack, Spade);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Jack, Heart);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Queen, Club);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Queen, Heart);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Queen, Diamond);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Queen, Spade);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(King, Club);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(King, Heart);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(King, Diamond);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(King, Spade);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Ace, Club);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Ace, Heart);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Ace, Diamond);
-            temp.push_back(currentCard);
-            currentCard = new FigureCard(Ace, Spade);
-            temp.push_back(currentCard);
-        }
-    }
-    random_shuffle(temp.begin(), temp.end());
 
-    while(!temp.empty())
-    {
-        CardDeck.push(*temp.back());
-        temp.pop_back();
-    }
-    //delete temp; check if need this
-}*/
 
 Deck::Deck(Deck &other)
         :Deck(other.toString()){
@@ -156,7 +100,7 @@ Deck& Deck::operator=(const Deck &&other)
         this->getcardDeck()=other.getcardDeck();
 
     }
-
+    return *this;
 }
 Deck& Deck::operator=(const Deck &other)
 {
@@ -167,7 +111,7 @@ Deck& Deck::operator=(const Deck &other)
     return *this;
 }
  queue<Card*>& Deck::getcardDeck() const {
-        return this->getcardDeck();
+        return CardDeck;
 }
 Card* Deck::fetchCard() {
     Card *ans= CardDeck.front();
