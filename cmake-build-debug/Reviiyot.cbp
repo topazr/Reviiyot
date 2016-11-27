@@ -44,6 +44,8 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/oshri/Desktop/Reviiyot/Reviiyot/include"/>
+					<Add directory="/home/oshri/Desktop/Reviiyot/Reviiyot/src"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
@@ -67,6 +69,8 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/oshri/Desktop/Reviiyot/Reviiyot/include"/>
+					<Add directory="/home/oshri/Desktop/Reviiyot/Reviiyot/src"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
@@ -84,18 +88,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/oshri/Desktop/Reviiyot/Reviiyot/cmake-build-debug/CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c">
-			<Option target="Reviiyot"/>
-		</Unit>
-		<Unit filename="/home/oshri/Desktop/Reviiyot/Reviiyot/cmake-build-debug/CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp">
-			<Option target="Reviiyot"/>
-		</Unit>
-		<Unit filename="/home/oshri/Desktop/Reviiyot/Reviiyot/cmake-build-debug/CMakeFiles/feature_tests.c">
-			<Option target="Reviiyot"/>
-		</Unit>
-		<Unit filename="/home/oshri/Desktop/Reviiyot/Reviiyot/cmake-build-debug/CMakeFiles/feature_tests.cxx">
-			<Option target="Reviiyot"/>
-		</Unit>
 		<Unit filename="/home/oshri/Desktop/Reviiyot/Reviiyot/include/Card.h">
 			<Option target="Reviiyot"/>
 		</Unit>
@@ -127,9 +119,6 @@
 			<Option target="Reviiyot"/>
 		</Unit>
 		<Unit filename="/home/oshri/Desktop/Reviiyot/Reviiyot/src/main.cpp">
-			<Option target="Reviiyot"/>
-		</Unit>
-		<Unit filename="/home/oshri/Desktop/Reviiyot/Reviiyot/src/reviiyot.cpp">
 			<Option target="Reviiyot"/>
 		</Unit>
 		<Unit filename="/home/oshri/Desktop/Reviiyot/Reviiyot/CMakeLists.txt">

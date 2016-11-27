@@ -57,20 +57,51 @@ Game::Game(char* configurationFile): turn(0) {
 }
 
 Game::Game (Game&& other)
-        : players((other.getPlayers())),(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayers()),turn(other.getTurn())  {
+{
+    players=other.getPlayers();
+    deck=other.getDeck();
+    verbal=other.getVerbal();
+    NumOfPlayers=other.getNumOfPlayers();
+    turn=other.getTurn();
 
 }
 Game::Game (Game& other)
-        : players((other.getPlayers())),(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayers()),turn(other.getTurn())  {
+          {
+
+            players=other.getPlayers();
+            deck=other.getDeck();
+            verbal=other.getVerbal();
+            NumOfPlayers=other.getNumOfPlayers();
+            turn=other.getTurn();
+
+
+
 
 }
 Game& Game::operator=( Game& other){
     if(this!=&other)
     {
+        players=other.getPlayers();
+        deck=other.getDeck();
+        verbal=other.getVerbal();
+        NumOfPlayers=other.getNumOfPlayers();
+        turn=other.getTurn();
 
-      Game* temp=new Game(other);
-        return *temp;
     }
+    return *this;
+
+}
+Game& Game::operator=( Game&& other){
+    if(this!=&other)
+    {
+        players=other.getPlayers();
+        deck=other.getDeck();
+        verbal=other.getVerbal();
+        NumOfPlayers=other.getNumOfPlayers();
+        turn=other.getTurn();
+
+    }
+    return *this;
 
 }
 void Game::printState()

@@ -123,114 +123,6 @@ Reviiyot/fast:
 	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/build
 .PHONY : Reviiyot/fast
 
-CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.o: CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.o
-
-.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.o
-
-# target to build an object file
-CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.o:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.o
-.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.o
-
-CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.i: CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.i
-
-.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.i
-
-# target to preprocess a source file
-CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.i:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.i
-.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.i
-
-CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.s: CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.s
-
-.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.s
-
-# target to generate assembly for a file
-CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.s:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.s
-.PHONY : CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c.s
-
-CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.o: CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
-
-.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.o
-
-# target to build an object file
-CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.o:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
-.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
-
-CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.i: CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
-
-.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.i
-
-# target to preprocess a source file
-CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.i:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
-.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
-
-CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.s: CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
-
-.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.s
-
-# target to generate assembly for a file
-CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.s:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
-.PHONY : CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
-
-CMakeFiles/feature_tests.o: CMakeFiles/feature_tests.c.o
-
-.PHONY : CMakeFiles/feature_tests.o
-
-# target to build an object file
-CMakeFiles/feature_tests.c.o:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.c.o
-.PHONY : CMakeFiles/feature_tests.c.o
-
-CMakeFiles/feature_tests.i: CMakeFiles/feature_tests.c.i
-
-.PHONY : CMakeFiles/feature_tests.i
-
-# target to preprocess a source file
-CMakeFiles/feature_tests.c.i:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.c.i
-.PHONY : CMakeFiles/feature_tests.c.i
-
-CMakeFiles/feature_tests.s: CMakeFiles/feature_tests.c.s
-
-.PHONY : CMakeFiles/feature_tests.s
-
-# target to generate assembly for a file
-CMakeFiles/feature_tests.c.s:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.c.s
-.PHONY : CMakeFiles/feature_tests.c.s
-
-CMakeFiles/feature_tests.o: CMakeFiles/feature_tests.cxx.o
-
-.PHONY : CMakeFiles/feature_tests.o
-
-# target to build an object file
-CMakeFiles/feature_tests.cxx.o:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.cxx.o
-.PHONY : CMakeFiles/feature_tests.cxx.o
-
-CMakeFiles/feature_tests.i: CMakeFiles/feature_tests.cxx.i
-
-.PHONY : CMakeFiles/feature_tests.i
-
-# target to preprocess a source file
-CMakeFiles/feature_tests.cxx.i:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.cxx.i
-.PHONY : CMakeFiles/feature_tests.cxx.i
-
-CMakeFiles/feature_tests.s: CMakeFiles/feature_tests.cxx.s
-
-.PHONY : CMakeFiles/feature_tests.s
-
-# target to generate assembly for a file
-CMakeFiles/feature_tests.cxx.s:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/CMakeFiles/feature_tests.cxx.s
-.PHONY : CMakeFiles/feature_tests.cxx.s
-
 src/Card.o: src/Card.cpp.o
 
 .PHONY : src/Card.o
@@ -393,33 +285,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/reviiyot.o: src/reviiyot.cpp.o
-
-.PHONY : src/reviiyot.o
-
-# target to build an object file
-src/reviiyot.cpp.o:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.o
-.PHONY : src/reviiyot.cpp.o
-
-src/reviiyot.i: src/reviiyot.cpp.i
-
-.PHONY : src/reviiyot.i
-
-# target to preprocess a source file
-src/reviiyot.cpp.i:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.i
-.PHONY : src/reviiyot.cpp.i
-
-src/reviiyot.s: src/reviiyot.cpp.s
-
-.PHONY : src/reviiyot.s
-
-# target to generate assembly for a file
-src/reviiyot.cpp.s:
-	$(MAKE) -f CMakeFiles/Reviiyot.dir/build.make CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.s
-.PHONY : src/reviiyot.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -429,18 +294,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Reviiyot"
-	@echo "... CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.o"
-	@echo "... CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.i"
-	@echo "... CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.s"
-	@echo "... CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.o"
-	@echo "... CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.i"
-	@echo "... CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.s"
-	@echo "... CMakeFiles/feature_tests.o"
-	@echo "... CMakeFiles/feature_tests.i"
-	@echo "... CMakeFiles/feature_tests.s"
-	@echo "... CMakeFiles/feature_tests.o"
-	@echo "... CMakeFiles/feature_tests.i"
-	@echo "... CMakeFiles/feature_tests.s"
 	@echo "... src/Card.o"
 	@echo "... src/Card.i"
 	@echo "... src/Card.s"
@@ -459,9 +312,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/reviiyot.o"
-	@echo "... src/reviiyot.i"
-	@echo "... src/reviiyot.s"
 .PHONY : help
 
 
