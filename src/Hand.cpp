@@ -6,26 +6,25 @@
 Hand::Hand() {
 	}
 Hand::Hand(const vector<Card*>& myHand)
-:pHand(myHand){
-    sort(begin(pHand), end(pHand), compare1);
+:pHand(new vector<Card*>( myHand)){
+    sort(begin(*pHand), end(*pHand), compare1);
 }
-Hand::Hand(Hand& other)
+Hand::Hand( Hand& other)
         :Hand(other.getHand()){
 }
-Hand& Hand::operator=(const Hand &other)
+Hand& Hand::operator=( Hand &other)
 {
     if (this!=&other)
     {
-        this=new Hand(other);
+        *pHand= other.getHand();
     }
     return *this;
 }
-Hand& Hand::operator=(const Hand &&other)
+const Hand& Hand::operator=(const Hand &&other)
 {
     if (this!=&other)
     {
         this->getHand()=other.getHand();
-        other.getHand()= nullptr;
     }
     return *this;
 
@@ -72,8 +71,8 @@ Hand& Hand::operator=(const Hand &&other)
         return str1<str2;
 }
 bool Hand::addCard(Card &card) {
-    pHand.push_back(&card);
-    sort(pHand.begin(), pHand.end(), compare1);
+    pHand->push_back(&card);
+    sort(pHand->begin(), pHand->end(), compare1);
     return true;
 
 
@@ -83,18 +82,18 @@ bool Hand::removeCard(Card &myCard) {
     if(index==-1)
         return false;//the card is not in this hand
     else {
-        auto it=pHand.begin();
+        auto it=pHand->begin();
         advance(it, index);//make sure the iterator get to the right place
-        pHand.erase(it);
+        pHand->erase(it);
     }
 
     return true;
 
 }
 int Hand::searchHand(string myCard) {//searches hand : returns -1 if card not found otherwise the index
-    int size =(int)pHand.size();
-    for (int i = 0; i < size; i++)
-        if(pHand.at(i)->toString()==myCard)
+    int size =(int)pHand->size();
+    for (int i = 0; i < size; i++){
+        if(pHand->at(i)->toString()==myCard)
             return i;
     }
     return -1;
@@ -103,20 +102,20 @@ int Hand::searchHand(string myCard) {//searches hand : returns -1 if card not fo
 
 string Hand::toString() {
     string ans("");
-    int size=(int)pHand.size();
+    int size=(int)pHand->size();
     for(int i=0;  i<size; i++) {
-        ans.append(pHand.at((unsigned long) i)->toString()+" ");
+        ans.append(pHand->at((unsigned long) i)->toString()+" ");
     }
     ans=ans.substr(0, ans.size()-1);
     return ans;
 }
 
 int Hand::getNumberOfCards() {
-    return (int)pHand.size();
+    return (int)pHand->size();
 }
 
 vector<Card*>& Hand::getHand()const {
-    return pHand;
+    return *pHand;
 }
 
 Hand::~Hand() {

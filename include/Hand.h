@@ -9,15 +9,15 @@ using namespace std;
 
 class Hand {
 private:
-	vector<Card*> pHand;// Declare here the collection of "Card *" of the hand
+	vector<Card*> *pHand;// Declare here the collection of "Card *" of the hand
     static bool compare1(Card*, Card*);
 
 public:
 	Hand();
 	Hand(const vector<Card*>&);
-    Hand(Hand &other);
-	Hand&operator=(const Hand& other);
-	Hand&operator=(const Hand&& other);
+    Hand( Hand &other);
+	Hand&operator=(Hand& other);
+	const Hand&operator=(const Hand&& other);
 	bool addCard(Card &card);
 	bool removeCard(Card &card);
 	int getNumberOfCards(); // Get the number of cards in hand
