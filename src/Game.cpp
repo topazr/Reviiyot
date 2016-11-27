@@ -57,11 +57,11 @@ Game::Game(char* configurationFile): turn(0) {
 }
 
 Game::Game (Game&& other)
-        : players((other.getPlayers())),deck(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayers()),turn(other.getTurn())  {
+        : players((other.getPlayers())),(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayers()),turn(other.getTurn())  {
 
 }
 Game::Game (Game& other)
-        : players((other.getPlayers())),deck(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayers()),turn(other.getTurn())  {
+        : players((other.getPlayers())),(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayers()),turn(other.getTurn())  {
 
 }
 Game& Game::operator=( Game& other){
