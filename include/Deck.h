@@ -11,14 +11,14 @@ using namespace std;
 
 class Deck{
 private:
-	queue<Card*> CardDeck;// Declare here the collection of "Card *" of the deck
+	queue<Card*>* CardDeck;// Declare here the collection of "Card *" of the deck
 public:
     Deck();
     Deck(string deck);
     Deck(Deck& other);
 	Deck(Deck&& other);
 	Deck& operator=(const Deck& other);
-	Deck& operator=(const Deck&& other);
+	Deck& operator=( Deck&& other);
 	queue<Card*>& getcardDeck()const;
     queue<Card*>& setDeck();
     Card* fetchCard();   //Returns the top card of the deck and remove it from the deck
