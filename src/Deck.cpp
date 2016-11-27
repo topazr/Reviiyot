@@ -147,14 +147,14 @@ Deck::Deck(Deck &other)
 Deck::Deck(Deck &&other)
 {
     this->getcardDeck()=other.getcardDeck();
-    other.getcardDeck()= nullptr;
+
 }
 Deck& Deck::operator=(const Deck &&other)
 {
     if (this!=&other)
     {
         this->getcardDeck()=other.getcardDeck();
-        other.getcardDeck()= nullptr;
+
     }
 
 }
@@ -162,14 +162,12 @@ Deck& Deck::operator=(const Deck &other)
 {
     if (this!=&other)
     {
-        Deck* temp= new Deck(other);
-        this=temp;
-
+       this->getcardDeck()=other.getcardDeck();
     }
     return *this;
 }
-queue<Card*>& Deck::getcardDeck() const {
-        return CardDeck;
+ queue<Card*>& Deck::getcardDeck() const {
+        return this->getcardDeck();
 }
 Card* Deck::fetchCard() {
     Card *ans= CardDeck.front();
@@ -212,6 +210,10 @@ vector<Card*>& Deck::dealCards() {
     for(int i=0; i<7; i++)
         newHand->push_back(fetchCard());
     return *newHand;
+}
+queue<Card*>& Deck::setDeck()
+{
+    return this->getcardDeck();
 }
 
 Deck::~Deck() {
