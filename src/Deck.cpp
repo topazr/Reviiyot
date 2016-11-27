@@ -142,19 +142,24 @@ Deck::Deck(string deck) {
 }*/
 
 Deck::Deck(Deck &other)
-        { CardDeck=new queue<Card*>(other.getcardDeck());
+        { CardDeck=other.CardDeck;
 }
 Deck::Deck(Deck &&other)
 {
     CardDeck=new queue<Card*>(other.getcardDeck());
 
 }
-Deck& Deck::operator=(Deck &&other)
+Deck& Deck::operator=(const Deck &&other)
 {
     if (this!=&other)
     {
-        CardDeck=other.CardDeck;
-        other.CardDeck=NULL;
+        for (unsigned int i=0;i<CardDeck->size();i++)
+            delete (&CardDeck[i]);
+        for (unsigned int i=0; i<other.CardDeck->size();i++) {
+
+            (*CardDeck).push(other.fetchCard());
+        }
+
 
     }
     return *this;
@@ -164,14 +169,19 @@ Deck& Deck::operator=(const Deck &other)
 {
     if (this!=&other)
     {
-       CardDeck=new queue<Card*>(other.getcardDeck());
+        for (unsigned int i=0;i<CardDeck->size();i++)
+            delete (&CardDeck[i]);
+        for (unsigned int i=0; i<other.CardDeck->size();i++) {
+
+            (*CardDeck).push(other.fetchCard());
+        }
     }
     return *this;
 }
  queue<Card*>& Deck::getcardDeck() const {
         return *CardDeck;
 }
-Card* Deck::fetchCard() {
+Card* Deck::fetchCard()const {
     Card *ans= CardDeck->front();
     CardDeck->pop();
     return ans;

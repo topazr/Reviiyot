@@ -9,14 +9,18 @@ Hand::Hand(const vector<Card*>& myHand)
 :pHand(new vector<Card*>( myHand)){
     sort(begin(*pHand), end(*pHand), compare1);
 }
-Hand::Hand( Hand& other)
-        :Hand(other.getHand()){
-}
+Hand::Hand( Hand& other)  {pHand=other.pHand;}
+
+
 Hand& Hand::operator=(const Hand &other)
 {
     if (this!=&other)
     {
-        *pHand= other.getHand();
+        for (unsigned int i=0;i<pHand->size();i++)
+            delete (&pHand[i]);
+        for (unsigned int i=0; i<other.pHand->size();i++) {
+          pHand->push_back(other.getHand()[i]);
+        }
 
     }
     return *this;
@@ -25,8 +29,12 @@ const Hand& Hand::operator=( Hand &&other)
 {
     if (this!=&other)
     {
-        pHand=other.pHand;
-        other.pHand= nullptr;
+
+        for (unsigned int i=0;i<pHand->size();i++)
+            delete (&pHand[i]);
+        for (unsigned int i=0; i<other.pHand->size();i++) {
+            pHand->push_back(other.getHand()[i]);
+        }
     }
     return *this;
 
@@ -116,11 +124,11 @@ int Hand::getNumberOfCards() {
     return (int)pHand->size();
 }
 
-vector<Card*>& Hand::getHand()const {
+vector<Card*>& Hand::getHand() const{
     return *pHand;
 }
 
 Hand::~Hand() {
-	delete &pHand;
+
 }
 
