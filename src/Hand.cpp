@@ -4,15 +4,15 @@
 
 
 Hand::Hand() {
-	}
+}
 Hand::Hand(const vector<Card*>& myHand)
-:pHand(myHand){
+        :pHand(myHand){
     sort(begin(pHand), end(pHand), compare1);
 }
 Hand::Hand(Hand& other)
         :Hand(other.getHand()){
 }
-    bool Hand::compare1(Card* card1, Card* card2){//compares what card is higher
+bool Hand::compare1(Card* card1, Card* card2){//compares what card is higher
     string str1=card1->toString();
     string str2=card2->toString();
     if(str1.at(0)=='K'){        //checks exceptions where lexicographically doesn't work
@@ -73,9 +73,11 @@ bool Hand::removeCard(Card &myCard) {
     return true;
 
 }
+
 int Hand::searchHand(string myCard) {//searches hand : returns -1 if card not found otherwise the index
-    int size = (int)pHand.size();
+    int size =(int)pHand.size();
     for (int i = 0; i < size; i++) {
+        if(pHand.at(i)->toString()==myCard)
             return i;
     }
     return -1;
@@ -83,10 +85,12 @@ int Hand::searchHand(string myCard) {//searches hand : returns -1 if card not fo
 
 
 string Hand::toString() {
-    string ans="";
+    string ans("");
     int size=(int)pHand.size();
-    for(int i=0;  i<size; i++)
-        ans=ans+(pHand.at((unsigned long)i))->toString();
+    for(int i=0;  i<size; i++) {
+        ans.append(pHand.at((unsigned long) i)->toString()+" ");
+    }
+    ans=ans.substr(0, ans.size()-1);
     return ans;
 }
 
@@ -99,6 +103,6 @@ vector<Card*>& Hand::getHand() {
 }
 
 Hand::~Hand() {
-	; //check if vector needs [] or not
+    ; //check if vector needs [] or not
 }
 

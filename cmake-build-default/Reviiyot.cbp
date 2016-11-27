@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/topaz/Desktop/Reviiyot/cmake-build-default"/>
+				<Option working_dir="/home/topaz/ClionProjects/Reviiyot/cmake-build-default"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/topaz/Desktop/Reviiyot/cmake-build-default"/>
+				<Option working_dir="/home/topaz/ClionProjects/Reviiyot/cmake-build-default"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/topaz/Desktop/Reviiyot/cmake-build-default"/>
+				<Option working_dir="/home/topaz/ClionProjects/Reviiyot/cmake-build-default"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Reviiyot">
-				<Option output="/home/topaz/Desktop/Reviiyot/cmake-build-default/Reviiyot" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/topaz/Desktop/Reviiyot/cmake-build-default"/>
+				<Option output="/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Reviiyot" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/topaz/ClionProjects/Reviiyot/cmake-build-default"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -54,15 +54,15 @@
 					<Add directory="/usr/include/c++/5/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 Reviiyot"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 Reviiyot"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Reviiyot/fast">
-				<Option output="/home/topaz/Desktop/Reviiyot/cmake-build-default/Reviiyot" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/topaz/Desktop/Reviiyot/cmake-build-default"/>
+				<Option output="/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Reviiyot" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/topaz/ClionProjects/Reviiyot/cmake-build-default"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -77,62 +77,62 @@
 					<Add directory="/usr/include/c++/5/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 Reviiyot/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/topaz/Desktop/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 Reviiyot/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/topaz/ClionProjects/Reviiyot/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/cmake-build-debug/CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/cmake-build-debug/CMakeFiles/3.6.2/CompilerIdC/CMakeCCompilerId.c">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/cmake-build-debug/CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/cmake-build-debug/CMakeFiles/3.6.2/CompilerIdCXX/CMakeCXXCompilerId.cpp">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/cmake-build-debug/CMakeFiles/feature_tests.c">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/cmake-build-debug/CMakeFiles/feature_tests.c">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/cmake-build-debug/CMakeFiles/feature_tests.cxx">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/cmake-build-debug/CMakeFiles/feature_tests.cxx">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/include/Card.h">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/include/Card.h">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/include/Deck.h">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/include/Deck.h">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/include/Game.h">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/include/Game.h">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/include/Hand.h">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/include/Hand.h">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/include/Player.h">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/include/Player.h">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/src/Card.cpp">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/src/Card.cpp">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/src/Deck.cpp">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/src/Deck.cpp">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/src/Game.cpp">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/src/Game.cpp">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/src/Hand.cpp">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/src/Hand.cpp">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/src/Player.cpp">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/src/Player.cpp">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/src/main.cpp">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/src/main.cpp">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/src/reviiyot.cpp">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/src/reviiyot.cpp">
 			<Option target="Reviiyot"/>
 		</Unit>
-		<Unit filename="/home/topaz/Desktop/Reviiyot/CMakeLists.txt">
+		<Unit filename="/home/topaz/ClionProjects/Reviiyot/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

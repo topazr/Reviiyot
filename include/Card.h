@@ -1,6 +1,7 @@
 #ifndef CARD_H_
 #define CARD_H_
 
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -21,17 +22,17 @@ enum Figure {
 
 class Card {
 private:
-  Shape shape;
+	Shape shape;
 public:
-  virtual string toString() = 0; //Returns the string representation of the card "<value><shape>" exp: "12S" or "QD"
-  virtual ~Card();
-    Card();
-    Card(Shape);
+	virtual string toString() = 0; //Returns the string representation of the card "<value><shape>" exp: "12S" or "QD"
+	virtual ~Card();
+	Card();
+	Card(Shape);
 	Card(Card& other);
 
-    virtual int getValue()=0;
-    Shape getShape();
-    bool compare(string,string);
+	virtual int getValue()=0;
+	Shape getShape();
+	bool compare(string,string);
 };
 
 class FigureCard : public Card {
@@ -40,11 +41,11 @@ private:
 
 public:
 	virtual string toString() override;
-    FigureCard();// default Constructor
-    FigureCard(Figure, Shape);
+	FigureCard();// default Constructor
+	FigureCard(Figure, Shape);
 	FigureCard(FigureCard& other);
-    ~FigureCard();
-    virtual int getValue() override ;
+	~FigureCard();
+	virtual int getValue() override ;
 };
 
 class NumericCard : public Card {
@@ -52,11 +53,11 @@ private:
 	int number;
 public:
 	virtual string toString() override;
-    NumericCard();// default Constructor
-    NumericCard(int, Shape);
-    //NumericCard(NumericCard);
-    virtual int getValue() override ;
-    ~NumericCard();
+	NumericCard();// default Constructor
+	NumericCard(int, Shape);
+	//NumericCard(NumericCard);
+	virtual int getValue() override ;
+	~NumericCard();
 
 };
 

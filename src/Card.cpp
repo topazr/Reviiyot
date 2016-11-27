@@ -6,9 +6,9 @@
  */
 
 #include "../include/Card.h"
-#include <sstream>
+
 Card::Card() {
-	}
+}
 Card::Card(Shape x):shape(x){
 }
 Card:: Card(Card& other)
@@ -48,10 +48,14 @@ bool Card::compare(string str1, string str2) {//compares what card is higher
 Card::~Card() {
 
 }
+
+FigureCard::~FigureCard() {
+
+}
 FigureCard::FigureCard() {
 }
 FigureCard::FigureCard(Figure fig, Shape shape1)
-    : Card(shape1), figure(fig){
+        : Card(shape1), figure(fig){
 }
 FigureCard::FigureCard(FigureCard& other):FigureCard((Figure)other.getValue(),other.getShape()){}
 string FigureCard::toString() {
@@ -83,7 +87,7 @@ int FigureCard::getValue() {
 
 NumericCard::NumericCard() {}
 NumericCard::NumericCard(int num, Shape shape1)
-    : Card(shape1), number(num){
+        : Card(shape1), number(num){
 }
 
 string NumericCard::toString() {
@@ -97,14 +101,17 @@ string NumericCard::toString() {
         ans='H';
     else
         ans='S';
-    stringstream ss;
-    ss << number << endl;
-    return ss.str()+ans;
+    string num;
+    num=to_string(number);
+    return num+ans;
 }
 
 int NumericCard::getValue() {
     return number;
 }
 
+NumericCard::~NumericCard() {
+
+}
 
 

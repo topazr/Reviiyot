@@ -14,14 +14,15 @@ Deck::Deck() {
 
 Deck::Deck(string deck) {
     while(deck.length()!=0){
-        if(deck.at(0)>=0 && deck.at(0)<=9){
+        if(deck.at(0)>='0' && deck.at(0)<='9'){
             int num;
             string number="";
             unsigned long i;
             for(i=0; deck.at(i)!=' '; i++){
                 number=number+deck.at(i);
             }
-            deck=deck.substr(i,deck.length()-i+1);//cuts the first card from the string
+            deck=deck.substr(i+1,deck.length()-i+1);//cuts the first card from the string
+            //cout<<deck.at(0);
             istringstream(number) >>num;
             if(number.at(number.length()-1)=='C')
                 CardDeck.push(new NumericCard(num,Club));
@@ -43,7 +44,8 @@ Deck::Deck(string deck) {
                     CardDeck.push(new FigureCard(Jack, Heart));
                 else if (deck.at(1) == 'S')
                     CardDeck.push(new FigureCard(Jack, Spade));
-            } else if (deck.at(0) == 'Q') {
+            }
+            else if (deck.at(0) == 'Q') {
                 if (deck.at(1) == 'C')
                     CardDeck.push(new FigureCard(Queen, Club));
                 else if (deck.at(1) == 'D')
@@ -52,7 +54,8 @@ Deck::Deck(string deck) {
                     CardDeck.push(new FigureCard(Queen, Heart));
                 else if (deck.at(1) == 'S')
                     CardDeck.push(new FigureCard(Queen, Spade));
-            } else if (deck.at(0) == 'K') {
+            }
+            else if (deck.at(0) == 'K') {
                 if (deck.at(1) == 'C')
                     CardDeck.push(new FigureCard(King, Club));
                 else if (deck.at(1) == 'D')
@@ -71,7 +74,11 @@ Deck::Deck(string deck) {
                 else if (deck.at(1) == 'S')
                     CardDeck.push(new FigureCard(Ace, Spade));
             }
-            deck=deck.substr(3,deck.length()-3);//cuts the first card from the string
+            if(deck.size()>2)
+                deck=deck.substr(3,deck.length()-3);//cuts the first card from the string
+            else if(deck.size()==2)
+                deck="";
+
         }
     }
 }
@@ -135,7 +142,7 @@ Deck::Deck(string deck) {
 }*/
 
 Deck::Deck(Deck &other)
-    :Deck(other.toString()){
+        :Deck(other.toString()){
 }
 
 
@@ -173,13 +180,13 @@ string Deck::toString() {
 
     }
 
-return ans;
+    return ans;
 }
 vector<Card*>& Deck::dealCards() {
-    vector<Card*> newHand;
+    vector<Card*> *newHand;
     for(int i=0; i<7; i++)
-        newHand.push_back(fetchCard());
-    return newHand;
+        newHand->push_back(fetchCard());
+    return *newHand;
 }
 
 Deck::~Deck() {
