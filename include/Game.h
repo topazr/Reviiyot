@@ -22,6 +22,7 @@ public:
     Game (Game&& other);
     Game (Game& other);
     Game& operator=( Game& other);
+	Game& operator=( Game&& other);
 	void init();
 	void play();
 	bool Winner();

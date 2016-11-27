@@ -12,19 +12,21 @@ Hand::Hand(const vector<Card*>& myHand)
 Hand::Hand( Hand& other)
         :Hand(other.getHand()){
 }
-Hand& Hand::operator=( Hand &other)
+Hand& Hand::operator=(const Hand &other)
 {
     if (this!=&other)
     {
         *pHand= other.getHand();
+
     }
     return *this;
 }
-const Hand& Hand::operator=(const Hand &&other)
+const Hand& Hand::operator=( Hand &&other)
 {
     if (this!=&other)
     {
-        this->getHand()=other.getHand();
+        pHand=other.pHand;
+        other.pHand= nullptr;
     }
     return *this;
 
