@@ -56,8 +56,21 @@ Game::Game(char* configurationFile): turn(0) {
     NumOfPlayers=position+1;
 }
 
+Game::Game (Game&& other)
+        : players((other.getPlayers())),deck(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayers()),turn(other.getTurn())  {
+
+}
 Game::Game (Game& other)
         : players((other.getPlayers())),deck(other.getDeck()),verbal(other.getVerbal()),NumOfPlayers(other.getNumOfPlayers()),turn(other.getTurn())  {
+
+}
+Game& Game::operator=( Game& other){
+    if(this!=&other)
+    {
+
+      Game* temp=new Game(other);
+        return *temp;
+    }
 
 }
 void Game::printState()
@@ -129,6 +142,9 @@ void Game::printNumberOfTurns()
 vector <Player*>& Game::getPlayers()
 {
     return players;
+}
+void Game::init() {
+
 }
 int Game::getVerbal()
 {

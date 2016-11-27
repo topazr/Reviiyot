@@ -306,6 +306,10 @@ PlayerType3::PlayerType3() {
 }
 PlayerType3::PlayerType3(string newName, vector<Card *>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
+    if(myPosition==0)
+        next=1;
+    else
+        next=0;
     }
 
 int PlayerType3::playTurn(vector<Player *> &players) {
@@ -319,8 +323,8 @@ int PlayerType3::highestVal() {
 }
 
 int PlayerType3::whoNext() {
-    if(next+1==getPosition()){
-        if(next+2>=numOfPlayer) {
+    if (next + 1 == getPosition()) {
+        if (next + 2 >= numOfPlayer) {
             next = 0;
             return numOfPlayer-1;
         }
@@ -341,6 +345,14 @@ int PlayerType3::whoNext() {
         }
 
 }
+void PlayerType3::setNumOfPlayers(int numOfPlayers) {
+    numOfPlayer=numOfPlayers;
+}
+
+
+
+
+
 
 PlayerType4::PlayerType4() {
 }
@@ -350,7 +362,9 @@ PlayerType4::PlayerType4(string newName, vector<Card *>& newHand, int myPosition
         next=1;
     else
         next=0;
-
+}
+void PlayerType4::setNumOfPlayers(int numOfPlayers) {
+    numOfPlayer=numOfPlayers;
 }
 
 int PlayerType4::playTurn(vector<Player *> &players) {

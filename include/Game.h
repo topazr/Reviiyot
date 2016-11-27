@@ -2,7 +2,8 @@
 #define GAME_H_
 
 #include <iostream>
-
+#include "Card.h"
+#include "Hand.h"
 #include "Player.h"
 #include "Deck.h"
 
@@ -18,7 +19,9 @@ private:
 public:
 	Game();
 	Game(char* configurationFile);
+    Game (Game&& other);
     Game (Game& other);
+    Game& operator=( Game& other);
 	void init();
 	void play();
 	bool Winner();

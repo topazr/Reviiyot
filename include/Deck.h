@@ -14,7 +14,6 @@ private:
 	queue<Card*> CardDeck;// Declare here the collection of "Card *" of the deck
 public:
     Deck();
-    Deck(int);
     Deck(string deck);
     Deck(Deck& other);
 	Deck(Deck&& other);

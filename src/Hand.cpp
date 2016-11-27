@@ -92,8 +92,9 @@ bool Hand::removeCard(Card &myCard) {
 
 }
 int Hand::searchHand(string myCard) {//searches hand : returns -1 if card not found otherwise the index
-    int size = (int)pHand.size();
-    for (int i = 0; i < size; i++) {
+    int size =(int)pHand.size();
+    for (int i = 0; i < size; i++)
+        if(pHand.at(i)->toString()==myCard)
             return i;
     }
     return -1;
@@ -101,10 +102,12 @@ int Hand::searchHand(string myCard) {//searches hand : returns -1 if card not fo
 
 
 string Hand::toString() {
-    string ans="";
+    string ans("");
     int size=(int)pHand.size();
-    for(int i=0;  i<size; i++)
-        ans=ans+(pHand.at((unsigned long)i))->toString();
+    for(int i=0;  i<size; i++) {
+        ans.append(pHand.at((unsigned long) i)->toString()+" ");
+    }
+    ans=ans.substr(0, ans.size()-1);
     return ans;
 }
 
