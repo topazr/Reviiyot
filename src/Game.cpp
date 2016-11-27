@@ -10,30 +10,52 @@
 
 Game::Game() {}
 Game::Game(char* configurationFile): turn(0) {
-       ifstream inFile;
-        inFile.open(configurationFile);
 
+        ifstream inFile;
+        inFile.open(configurationFile);
+        cout<<inFile.fail();
        string line;
+
+    string a="7H AD 5H KD 5D";
        int count=0;
-       while (count<4)
+    Deck a1;
+    //cout<<a1.getcardDeck().size();
+      //deck=Deck(a1);
+       verbal=0;
+    players;
+
+
+
+
+
+     /*while (count<4)
        {
+
            getline(inFile,line);
-           if (line.at(0)=='#') {
+
+           if (line.length()!=0&&line.at(0)=='#') {
+
                getline(inFile,line);
+
                 while (line.length()==0)
                 {
                     getline(inFile,line);
                 }
                 if (count==0){
-                    verbal=line.at(0)-'0';}
+
+                    verbal=line.at(0)-'0';
+                   }
                else if (count==2)
                 {
                     deck=Deck(line);
+
+
                 }
 
+               count++;
 
            }
-           count++;
+
 
        }
         int position=0;
@@ -42,6 +64,7 @@ Game::Game(char* configurationFile): turn(0) {
         unsigned long index = line.find("");
         string name = line.substr(0, index);
         int player=line.at(index+1)-'0';
+            cout<<5;
         if (player==1){
             players.push_back(new PlayerType1(name,deck.dealCards(),position));}
             if (player==2){
@@ -53,7 +76,7 @@ Game::Game(char* configurationFile): turn(0) {
         position++;
         getline(inFile,line);
     }
-    NumOfPlayers=position+1;
+    NumOfPlayers=position+1;*/
 }
 
 Game::Game (Game&& other)
@@ -197,7 +220,7 @@ Deck& Game::getDeck()
 
 
 Game::~Game() {
-    delete (&players);
+
 	// TODO Auto-generated destructor stub
 }
 
