@@ -18,7 +18,7 @@ public:
 	Player();
 	Player(string, vector<Card*>&,int);
     Player(Player &other);
-	Player& operator=(const Player &other);
+	virtual Player& operator=(const Player &other);
 	string printPlayer();
 	~Player();
 	string getName() const ;   //Returns the name of the player

@@ -93,15 +93,15 @@ Game::Game (Game& other)
           {
               cout<<"im here";
 
-            for(int i=0;i<NumOfPlayers;i++)
+           /* for(int i=0;i<NumOfPlayers;i++)
             {
                delete players.at(i);
             }
               for(int i=0;i<other.getNumOfPlayers();i++)
               {
 
-              }
-
+              }*/
+            players=other.getPlayers();
             deck=other.getDeck();
             verbal=other.getVerbal();
             NumOfPlayers=other.getNumOfPlayers();

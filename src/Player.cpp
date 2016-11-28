@@ -432,7 +432,7 @@ PlayerType4::PlayerType4(string newName, vector<Card *>& newHand, int myPosition
 }
 PlayerType4& PlayerType4::operator=(const PlayerType4 &other)
 {
-     
+
 }
 void PlayerType4::setNumOfPlayers(int numOfPlayers) {
     numOfPlayer=numOfPlayers;

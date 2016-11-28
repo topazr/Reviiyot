@@ -13,7 +13,14 @@ Card::Card(Shape x):shape(x){
 }
 Card:: Card(Card& other)
         :Card(other.getShape()){}
-
+Card& Card::operator=(Card &&other)
+{
+    shape=other.shape;
+}
+Card& Card::operator=(Card &other)
+{
+    shape=other.shape;
+}
 
 
 Shape Card::getShape() {
@@ -58,6 +65,14 @@ FigureCard::FigureCard() {
 }
 FigureCard::FigureCard(Figure fig, Shape shape1)
         : Card(shape1), figure(fig){
+}
+FigureCard& FigureCard::operator=(FigureCard &&other)
+{
+
+}
+FigureCard& FigureCard::operator=(FigureCard &other)
+{
+
 }
 FigureCard::FigureCard(FigureCard& other):FigureCard((Figure)other.getValue(),other.getShape()){}
 string FigureCard::toString() {
