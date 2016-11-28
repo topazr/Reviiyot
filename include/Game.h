@@ -21,16 +21,16 @@ public:
 	Game(char* configurationFile);
     Game (Game&& other);
     Game (Game& other);
-    Game& operator=( Game& other);
-	Game& operator=( Game&& other);
+    Game& operator=(const Game& other);
+	Game& operator=(const Game&& other);
 	void init();
 	void play();
 	bool Winner();
-    vector<Player*>& getPlayers();
-    int getVerbal();
-    int getNumOfPlayers();
-    int getTurn();
-    Deck& getDeck();
+    const vector<Player*>&  getPlayers()const ;
+    int getVerbal() const;
+    int getNumOfPlayers() const;
+    int getTurn() const;
+    const Deck& getDeck()const;
 	void printState();        //Print the state of the game as described in the assignment.
 	void printWinner();       //Print the winner of the game as describe in the assignment.
 	void printNumberOfTurns(); //Print the number of played turns at any given time.v

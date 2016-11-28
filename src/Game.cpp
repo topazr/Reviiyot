@@ -9,30 +9,23 @@
 #include <fstream>
 
 Game::Game() {}
-Game::Game(char* configurationFile): turn(0) {
+Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
 
         ifstream inFile;
         inFile.open(configurationFile);
         cout<<inFile.fail();
        string line;
 
-    string a="7H AD 5H KD 5D";
-       int count=0;
-    Deck a1;
-    //cout<<a1.getcardDeck().size();
-      //deck=Deck(a1);
-       verbal=0;
-    players;
 
 
 
 
-
-     /*while (count<4)
+     int count=0;
+     while (count<4)
        {
-
+            cout<<"KKKKK";
            getline(inFile,line);
-
+            cout<<line;
            if (line.length()!=0&&line.at(0)=='#') {
 
                getline(inFile,line);
@@ -47,7 +40,8 @@ Game::Game(char* configurationFile): turn(0) {
                    }
                else if (count==2)
                 {
-                    deck=Deck(line);
+                    cout<<"this: "<< line<<"!!!!!"<<endl;
+                   //deck=Deck(line);
 
 
                 }
@@ -60,7 +54,7 @@ Game::Game(char* configurationFile): turn(0) {
        }
         int position=0;
 
-        while (!inFile.eof()) {
+        /*while (!inFile.eof()) {
         unsigned long index = line.find("");
         string name = line.substr(0, index);
         int player=line.at(index+1)-'0';
@@ -101,10 +95,15 @@ Game::Game (Game& other)
 
 
 }
-Game& Game::operator=( Game& other){
+Game& Game::operator=(const Game& other){
     if(this!=&other)
     {
-        players=other.getPlayers();
+        for (unsigned int i=0;i<players.size();i++)
+            delete (players[i]);
+        for (unsigned int i=0; i<other.players.size();i++) {
+            players.push_back(other.getPlayers()[i]);
+        }
+
         deck=other.getDeck();
         verbal=other.getVerbal();
         NumOfPlayers=other.getNumOfPlayers();
@@ -114,10 +113,15 @@ Game& Game::operator=( Game& other){
     return *this;
 
 }
-Game& Game::operator=( Game&& other){
+Game& Game::operator=(const Game&& other){
     if(this!=&other)
     {
-        players=other.getPlayers();
+        for (unsigned int i=0;i<players.size();i++)
+            delete (players[i]);
+        for (unsigned int i=0; i<other.players.size();i++) {
+            players.push_back(other.getPlayers()[i]);
+        }
+
         deck=other.getDeck();
         verbal=other.getVerbal();
         NumOfPlayers=other.getNumOfPlayers();
@@ -193,26 +197,26 @@ void Game::printNumberOfTurns()
     cout<<"Number of turns: "<<turn<<endl;
 }
 
-vector <Player*>& Game::getPlayers()
+const vector <Player*>&  Game::getPlayers() const
 {
     return players;
 }
 void Game::init() {
 
 }
-int Game::getVerbal()
+int Game::getVerbal () const
 {
     return verbal;
 }
-int Game::getTurn()
+int Game::getTurn() const
 {
     return turn;
 }
-int Game::getNumOfPlayers()
+int Game::getNumOfPlayers() const
 {
     return NumOfPlayers;
 }
-Deck& Game::getDeck()
+const Deck& Game::getDeck() const
 {
     return deck;
 }
