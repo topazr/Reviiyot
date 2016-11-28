@@ -13,25 +13,28 @@ Deck::Deck() {
 }
 
 Deck::Deck(string deck) {
-    while(deck.length()!=0){
-        if(deck.at(0)>='0' && deck.at(0)<='9'){
+    while(deck.length()>0){
+        /*int index=deck.find(' ');
+        deck=deck.substr(index);*/
+       if(deck.at(0)>'0' && deck.at(0)<='9'){
             int num;
             string number="";
             unsigned long i;
-            for(i=0; deck.at(i)!=' '; i++){
+            for(i=0; deck.at(i)!=' '||i<deck.length(); i++){
                 number=number+deck.at(i);
+                cout<<number;
             }
-            deck=deck.substr(i+1,deck.length()-i+1);//cuts the first card from the string
+            deck=deck.substr(i+1);//cuts the first card from the string
             //cout<<deck.at(0);
             istringstream(number) >>num;
-            if(number.at(number.length()-1)=='C')
-                CardDeck->push(new NumericCard(num,Club));
-            else if(number.at(number.length()-1)=='D')
-                CardDeck->push(new NumericCard(num,Diamond));
-            else if(number.at(number.length()-1)=='H')
-                CardDeck->push(new NumericCard(num,Heart));
-            else if(number.at(number.length()-1)=='S')
-                CardDeck->push(new NumericCard(num,Spade));
+            if(number.at(number.length()-1)=='C'){
+                CardDeck->push(new NumericCard(num,Club));}
+            else if(number.at(number.length()-1)=='D'){
+                CardDeck->push(new NumericCard(num,Diamond));}
+            else if(number.at(number.length()-1)=='H'){
+                CardDeck->push(new NumericCard(num,Heart));}
+            else if(number.at(number.length()-1)=='S'){
+                CardDeck->push(new NumericCard(num,Spade));}
 
         }
         else {
@@ -74,12 +77,13 @@ Deck::Deck(string deck) {
                 else if (deck.at(1) == 'S')
                     CardDeck->push(new FigureCard(Ace, Spade));
             }
-            if(deck.size()>2)
-                deck=deck.substr(3,deck.length()-3);//cuts the first card from the string
-            else if(deck.size()==2)
-                deck="";
 
         }
+        if(deck.size()>2)
+            deck=deck.substr(3,deck.length()-3);//cuts the first card from the string
+        else if(deck.size()==2)
+            deck="";
+
     }
 }
 

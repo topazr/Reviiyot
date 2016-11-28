@@ -25,6 +25,10 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
        {
             cout<<"KKKKK";
            getline(inFile,line);
+           while (line.length()==0)
+           {
+               getline(inFile,line);
+           }
             cout<<line;
            if (line.length()!=0&&line.at(0)=='#') {
 
@@ -40,7 +44,7 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
                    }
                else if (count==2)
                 {
-                    cout<<"this: "<< line<<"!!!!!"<<endl;
+                   // cout<<"this: "<< line<<"!!!!!"<<endl;
                    //deck=Deck(line);
 
 
