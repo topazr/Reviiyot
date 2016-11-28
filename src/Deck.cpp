@@ -18,11 +18,13 @@ Deck::Deck(string deck) {
             int num;
             string number="";
             unsigned long i;
-            for(i=0; deck.at(i)!=' '; i++){
+            for(i=0; deck.at(i)!=' ' || i<deck.length(); i++){
                 number=number+deck.at(i);
             }
-            deck=deck.substr(i+1,deck.length()-i+1);//cuts the first card from the string
-            //cout<<deck.at(0);
+            if(i+1<deck.length())
+                deck=deck.substr(i+1);//cuts the first card from the string
+            else
+                deck="";
             istringstream(number) >>num;
             if(number.at(number.length()-1)=='C')
                 CardDeck->push(new NumericCard(num,Club));
@@ -75,7 +77,7 @@ Deck::Deck(string deck) {
                     CardDeck->push(new FigureCard(Ace, Spade));
             }
             if(deck.size()>2)
-                deck=deck.substr(3,deck.length()-3);//cuts the first card from the string
+                deck=deck.substr(3);//cuts the first card from the string
             else if(deck.size()==2)
                 deck="";
 
