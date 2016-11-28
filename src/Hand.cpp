@@ -4,12 +4,15 @@
 
 
 Hand::Hand() {
+    pHand=new vector<Card*>();
 	}
 Hand::Hand(const vector<Card*>& myHand)
-:pHand(new vector<Card*>( myHand)){
+    :pHand(new vector<Card*>( myHand)){
     sort(begin(*pHand), end(*pHand), compare1);
 }
-Hand::Hand( Hand& other)  {pHand=other.pHand;}
+Hand::Hand( Hand& other)  {
+    pHand=other.pHand;
+}
 
 
 Hand& Hand::operator=(const Hand &other)
@@ -80,9 +83,12 @@ const Hand& Hand::operator=( Hand &&other)
     else
         return str1<str2;
 }
+
+
 bool Hand::addCard(Card &card) {
     pHand->push_back(&card);
     sort(pHand->begin(), pHand->end(), compare1);
+
     return true;
 
 

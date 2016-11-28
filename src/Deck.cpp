@@ -10,19 +10,20 @@
 #include <sstream>
 
 Deck::Deck() {
+    CardDeck=new queue<Card*>();
 }
 
 Deck::Deck(string deck) {
+    CardDeck=new queue<Card*>();
     while(deck.length()!=0){
         if(deck.at(0)>='0' && deck.at(0)<='9'){
             int num;
             string number="";
             unsigned long i;
-            for(i=0; deck.at(i)!=' '||i<deck.length(); i++){
+            for(i=0; i<deck.length() && deck.at(i)!=' '; i++){
                 number=number+deck.at(i);
             }
             deck=deck.substr(i+1);//cuts the first card from the string
-            //cout<<deck.at(0);
             istringstream(number) >>num;
             if(number.at(number.length()-1)=='C')
                 CardDeck->push(new NumericCard(num,Club));
@@ -74,6 +75,7 @@ Deck::Deck(string deck) {
                 else if (deck.at(1) == 'S')
                     CardDeck->push(new FigureCard(Ace, Spade));
             }
+
             if(deck.size()>2)
                 deck=deck.substr(3);//cuts the first card from the string
             else if(deck.size()==2)
@@ -191,34 +193,25 @@ int Deck::getNumberOfCards() {
     return (int)CardDeck->size();
 }
 string Deck::toString() {
-    string ans;
+    string ans("");
     if(CardDeck->empty())
-        return "";
+        return ans;
     else {
         const int size=(int)CardDeck->size();
         int counter=0;
-        Card *temp=CardDeck->front();
-        CardDeck->pop();
-        ans=temp->toString();
-        CardDeck->push(temp);
-        counter++;
-        while(counter!=size){
-            temp=CardDeck->front();
-            CardDeck->pop();
-            ans=ans+" "+temp->toString();
-            CardDeck->push(temp);
-            counter++;
-
-
+        queue<Card*> *temp=new queue<Card*>(*CardDeck);
+        while(temp->size()>1){
+            ans.append(temp->front()->toString()+" ");
+            temp->pop();
         }
+        ans.append(temp->front()->toString());
         delete temp;
-
     }
 
     return ans;
 }
-vector<Card*>& Deck::dealCards() {
-    vector<Card*> *newHand;
+vector<Card*>& Deck::dealCards(){
+    vector<Card*> *newHand=new vector<Card*>();
     for(int i=0; i<7; i++)
         newHand->push_back(fetchCard());
     return *newHand;
