@@ -14,6 +14,8 @@ Card::Card(Shape x):shape(x){
 Card:: Card(Card& other)
         :Card(other.getShape()){}
 
+
+
 Shape Card::getShape() {
     return shape;
 }
