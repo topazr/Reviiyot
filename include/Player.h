@@ -13,10 +13,12 @@ private:
 	string name;
     int position;
 	int draw;
+
 public:
 	Player();
 	Player(string, vector<Card*>&,int);
     Player(Player &other);
+	Player& operator=(const Player &other);
 	string printPlayer();
 	~Player();
 	string getName() const ;   //Returns the name of the player
@@ -25,9 +27,11 @@ public:
 	int getDraw() const ;
 	void setDraw(int);
 	int plays(int, Player&);
+	void fourCards();
+
 };
 
-class PlayerType1 : public Player {  //For strategy 1
+class  PlayerType1 : public Player {  //For strategy 1
 //...
 private:
 	int hasMost();
@@ -36,6 +40,7 @@ public:
 	PlayerType1();
 	PlayerType1(string, vector<Card*>&,int);
 	virtual int playTurn(vector<Player*>&) override ;
+	PlayerType1& operator=(const PlayerType1 &other);
 
 
 };
@@ -45,10 +50,12 @@ class PlayerType2 : public Player{  //For strategy 2
 private:
 	int hasLeast();
 	Player& mostCards(vector<Player*>&);
+
 public:
 	PlayerType2();
 	PlayerType2(string, vector<Card*>&,int);
 	virtual int playTurn(vector<Player*>&) override ;
+	PlayerType2& operator=(const PlayerType2 &other);
 };
 
 class PlayerType3 : public Player {  //For strategy 3
@@ -62,6 +69,7 @@ public:
 	PlayerType3();
 	PlayerType3(string, vector<Card*>&,int);
 	virtual  int playTurn(vector<Player*>&) override ;
+	PlayerType3& operator=(const PlayerType3 &other);
 	void setNumOfPlayers(int);
 };
 
@@ -75,6 +83,7 @@ private:
 public:
 	PlayerType4();
 	PlayerType4(string, vector<Card*>&,int);
+	PlayerType4& operator=(const PlayerType4 &other);
 	void setNumOfPlayers(int);
 	virtual int playTurn(vector<Player*>&) override ;
 };

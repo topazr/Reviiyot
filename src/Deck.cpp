@@ -15,6 +15,7 @@ Deck::Deck() {
 
 Deck::Deck(string deck) {
     CardDeck=new queue<Card*>();
+
     while(deck.length()!=0){
         if(deck.at(0)>='0' && deck.at(0)<='9'){
             int num;
@@ -155,9 +156,11 @@ Deck& Deck::operator=(const Deck &&other)
 {
     if (this!=&other)
     {
+
         for (unsigned int i=0;i<CardDeck->size();i++)
-            delete (&CardDeck[i]);
-        for (unsigned int i=0; i<other.CardDeck->size();i++) {
+             CardDeck->pop();
+        unsigned long size=other.CardDeck->size();
+        for (unsigned int i=0; i<size;i++) {
 
             (*CardDeck).push(other.fetchCard());
         }
@@ -171,12 +174,9 @@ Deck& Deck::operator=(const Deck &other)
 {
     if (this!=&other)
     {
-        for (unsigned int i=0;i<CardDeck->size();i++)
-            delete (&CardDeck[i]);
-        for (unsigned int i=0; i<other.CardDeck->size();i++) {
-
-            (*CardDeck).push(other.fetchCard());
-        }
+        for (unsigned int i=0;i<CardDeck->size();i++){
+            CardDeck->pop();}
+      *CardDeck=other.getcardDeck();
     }
     return *this;
 }
@@ -192,7 +192,7 @@ Card* Deck::fetchCard()const {
 int Deck::getNumberOfCards() {
     return (int)CardDeck->size();
 }
-string Deck::toString() {
+string Deck::toString() const{
     string ans("");
     if(CardDeck->empty())
         return ans;
