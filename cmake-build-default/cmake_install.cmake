@@ -1,4 +1,4 @@
-# Install script for directory: /home/topaz/ClionProjects/Reviiyot
+# Install script for directory: /home/oshri/Desktop/Reviiyot
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/topaz/ClionProjects/Reviiyot/cmake-build-default/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/oshri/Desktop/Reviiyot/cmake-build-default/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
