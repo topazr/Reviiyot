@@ -11,35 +11,29 @@
 Game::Game() {}
 Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
 
-        ifstream inFile;
-        inFile.open(configurationFile);
-       string line;
-
-
-
-
-
-     int count=0;
-     while (count<4)
+    ifstream inFile;
+    inFile.open(configurationFile);
+    string line;
+    int count=0;
+    getline(inFile,line);
+     while (count<3)
        {
-           getline(inFile,line);
+
            while (line.length()==0||(line.at(0)=='#' ))
            {
                getline(inFile,line);
-           }
-                if (count==0){
-
-                    verbal=line.at(0)-'0';
-                   }
-               else if (count==2)
-                {
-                   deck=Deck(line);
-
-                }
-
-               count++;
 
            }
+           if (count==0){
+                verbal=line.at(0)-'0';
+           }
+           else if (count==2)
+                deck=Deck(line);
+           count++;
+           getline(inFile,line);
+
+       }
+
 
 
     queue<int>* temp=new queue<int>;
@@ -48,35 +42,43 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
     {
         getline(inFile,line);
     }
+
      while (!inFile.eof()) {
-     unsigned long index = line.find(" ");
-     string name = line.substr(0, index);
-         while(line.at(index)==' '){
-             index++;}
+         unsigned long index = line.find(" ");
+         string name = line.substr(0, index);
 
-     int player=line.at(index)-'0';
-
-     if (player==1){
-         players.push_back(new PlayerType1(name,deck.dealCards(),position));}
-         if (player==2){
-               players.push_back(new PlayerType2(name,deck.dealCards(),position));}
-         if (player==3) {
+             while(line.at(index)==' '){
+                 index++;
+             }
+         int player=line.at(index)-'0';
+         if (player==1){
+             players.push_back(new PlayerType1(name,deck.dealCards(),position));
+         }
+         else if (player==2){
+             players.push_back(new PlayerType2(name,deck.dealCards(),position));
+         }
+         else if (player==3) {
              players.push_back(new PlayerType3(name, deck.dealCards(), position));
              temp->push(position);
          }
-         if (player==4){
+         else if (player==4){
              players.push_back(new PlayerType4(name,deck.dealCards(),position));
              temp->push(position);
          }
-     position++;
-     getline(inFile,line);
- }
- NumOfPlayers=position;
-for (unsigned long i=0;i<players.size();i++)
-{
+         position++;
 
+         getline(inFile,line);
 
-}
+    }
+
+    NumOfPlayers=position;
+    int size=temp->size();
+
+    for(unsigned long i=0; i<size; i++) {
+        players.at((unsigned long) temp->back())->setNumOfPlayers(NumOfPlayers);
+        temp->pop();
+    }
+cout<<3;
 }
 
 Game::Game (Game&& other)
@@ -90,17 +92,19 @@ Game::Game (Game&& other)
 }
 Game::Game (Game& other)
           {
-
-           /* for(int i=0;i<NumOfPlayers;i++)
-            {
-               delete players.at(i);
+              players.clear();
+              for(unsigned long i=0; i<other.getNumOfPlayers(); i++){
+                  if(other.getPlayers().at(i)->getStrategy()==1)
+                      players.push_back(new PlayerType1(*other.getPlayers().at(i)));
+                  else if(other.getPlayers().at(i)->getStrategy()==2)
+                      players.push_back(new PlayerType2(*other.getPlayers().at(i)));
+                  else if(other.getPlayers().at(i)->getStrategy()==3)
+                      players.push_back(new PlayerType3(*other.getPlayers().at(i)));
+                  else if(other.getPlayers().at(i)->getStrategy()==4)
+                      players.push_back(new PlayerType4(*other.getPlayers().at(i)));
             }
-              for(int i=0;i<other.getNumOfPlayers();i++)
-              {
 
-              }*/
-            players=other.getPlayers();
-            deck=other.getDeck();
+              deck=other.getDeck();
             verbal=other.getVerbal();
             NumOfPlayers=other.getNumOfPlayers();
             turn=other.getTurn();
@@ -112,12 +116,17 @@ Game::Game (Game& other)
 Game& Game::operator=(const Game& other){
     if(this!=&other)
     {
-        for (unsigned int i=0;i<players.size();i++)
-            delete (players[i]);
-        for (unsigned int i=0; i<other.players.size();i++) {
-            players.push_back(other.getPlayers()[i]);
+        players.clear();
+        for(unsigned long i=0; i<other.getNumOfPlayers(); i++){
+            if(other.getPlayers().at(i)->getStrategy()==1)
+                players.push_back(new PlayerType1(*other.getPlayers().at(i)));
+            else if(other.getPlayers().at(i)->getStrategy()==2)
+                players.push_back(new PlayerType2(*other.getPlayers().at(i)));
+            else if(other.getPlayers().at(i)->getStrategy()==3)
+                players.push_back(new PlayerType3(*other.getPlayers().at(i)));
+            else if(other.getPlayers().at(i)->getStrategy()==4)
+                players.push_back(new PlayerType4(*other.getPlayers().at(i)));
         }
-
         deck=other.getDeck();
         verbal=other.getVerbal();
         NumOfPlayers=other.getNumOfPlayers();
@@ -128,12 +137,19 @@ Game& Game::operator=(const Game& other){
 
 }
 Game& Game::operator=(const Game&& other){
+    cout<<"hey ";
     if(this!=&other)
     {
-        for (unsigned int i=0;i<players.size();i++)
-            delete (players[i]);
-        for (unsigned int i=0; i<other.players.size();i++) {
-            players.push_back(other.getPlayers()[i]);
+        players.clear();
+        for(unsigned long i=0; i<other.getNumOfPlayers(); i++){
+            if(other.getPlayers().at(i)->getStrategy()==1)
+                players.push_back(new PlayerType1(*other.getPlayers().at(i)));
+            else if(other.getPlayers().at(i)->getStrategy()==2)
+                players.push_back(new PlayerType2(*other.getPlayers().at(i)));
+            else if(other.getPlayers().at(i)->getStrategy()==3)
+                players.push_back(new PlayerType3(*other.getPlayers().at(i)));
+            else if(other.getPlayers().at(i)->getStrategy()==4)
+                players.push_back(new PlayerType4(*other.getPlayers().at(i)));
         }
 
         deck=other.getDeck();

@@ -23,7 +23,10 @@ Deck::Deck(string deck) {
             for(i=0; i<deck.length() && deck.at(i)!=' '; i++){
                 number=number+deck.at(i);
             }
-            deck=deck.substr(i+1);//cuts the first card from the string
+            if(i+1<=deck.length())
+                deck=deck.substr(i+1);//cuts the first card from the string
+            else
+                deck="";
             istringstream(number) >>num;
             if(number.at(number.length()-1)=='C')
                 CardDeck->push(new NumericCard(num,Club));
@@ -33,9 +36,9 @@ Deck::Deck(string deck) {
                 CardDeck->push(new NumericCard(num,Heart));
             else if(number.at(number.length()-1)=='S')
                 CardDeck->push(new NumericCard(num,Spade));
-
         }
         else {
+
             if (deck.at(0) == 'J') {
                 if (deck.at(1) == 'C')
                     CardDeck->push(new FigureCard(Jack, Club));

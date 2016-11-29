@@ -13,14 +13,14 @@ Card::Card(Shape x):shape(x){
 }
 Card:: Card(Card& other)
         :Card(other.getShape()){}
-Card& Card::operator=(Card &&other)
+/*Card& Card::operator=(Card &&other)
 {
     shape=other.shape;
 }
 Card& Card::operator=(Card &other)
 {
     shape=other.shape;
-}
+}*/
 
 
 Shape Card::getShape() {
@@ -54,6 +54,9 @@ bool Card::compare(string str1, string str2) {//compares what card is higher
     }
 }
 
+void Card::setShape(Shape other) {
+    shape=other;
+}
 Card::~Card() {
 
 }
@@ -66,15 +69,7 @@ FigureCard::FigureCard() {
 FigureCard::FigureCard(Figure fig, Shape shape1)
         : Card(shape1), figure(fig){
 }
-FigureCard& FigureCard::operator=(FigureCard &&other)
-{
 
-}
-FigureCard& FigureCard::operator=(FigureCard &other)
-{
-
-}
-FigureCard::FigureCard(FigureCard& other):FigureCard((Figure)other.getValue(),other.getShape()){}
 string FigureCard::toString() {
     string ans="";
     Shape shape=getShape();
@@ -99,7 +94,16 @@ string FigureCard::toString() {
 int FigureCard::getValue() {
     return figure;
 }
-
+FigureCard& FigureCard::operator=(Card &&other)
+{
+    Card::setShape(other.getShape());
+    figure=(Figure)other.getValue();
+}
+FigureCard& FigureCard::operator=(Card &other)
+{
+    Card::setShape(other.getShape());
+    figure=(Figure)other.getValue();
+}
 
 
 NumericCard::NumericCard() {}
@@ -125,6 +129,16 @@ string NumericCard::toString() {
 
 int NumericCard::getValue() {
     return number;
+}
+NumericCard& NumericCard::operator=(Card &&other)
+{
+    Card::setShape(other.getShape());
+    number=other.getValue();
+}
+NumericCard& NumericCard::operator=(Card &other)
+{
+    Card::setShape(other.getShape());
+    number=other.getValue();
 }
 
 NumericCard::~NumericCard() {

@@ -39,6 +39,14 @@ int Player::getDraw() const {
     return draw;
 }
 
+int Player::getStrategy() const {
+    return strategy;
+}
+
+void Player::setStrategy(int strat) {
+    strategy=strat;
+}
+
 void Player::setDraw(int num)  {
     draw=num;
 }
@@ -129,7 +137,7 @@ int Player::plays(int cardAsk, Player &playerAsk) {
             }
             if(playerAsk.searchHand("KD")!=-1) {
                 addCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("KD")));
-                playerAsk.removeCard(*playerAsk.getHand().at(playerAsk.searchHand("KD")));
+                playerAsk.removeCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("KD")));
                 playerAsk.setDraw(playerAsk.getDraw()+1);
             }
             if(playerAsk.searchHand("KH")!=-1) {
@@ -212,6 +220,12 @@ string Player::printPlayer(){
     return ans;
 }
 
+void Player::setNumOfPlayers(int numOfPlayers) {
+    numOfPlayer=numOfPlayers;
+}
+int Player::getNumOfPlayers(){
+    return numOfPlayer;
+}
 Player::~Player() {
     // TODO Auto-generated destructor stub
 }
@@ -220,7 +234,11 @@ PlayerType1::PlayerType1() {
 }
 PlayerType1::PlayerType1(string newName, vector<Card*>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
-
+    setStrategy(1);
+}
+PlayerType1::PlayerType1(Player &other)
+    :Player(other.getName(),other.getHand(),other.getPosition()){
+    setStrategy(1);
 }
 PlayerType1& PlayerType1::operator=(const PlayerType1 &other)
 {
@@ -284,10 +302,15 @@ int PlayerType1::playTurn(vector<Player *> &players) {
 
 
 PlayerType2::PlayerType2() {
+    setStrategy(2);
 }
 PlayerType2::PlayerType2(string newName, vector<Card *>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
-
+    setStrategy(2);
+}
+PlayerType2::PlayerType2(Player &other)
+        :Player(other.getName(),other.getHand(),other.getPosition()){
+    setStrategy(2);
 }
 PlayerType2 & PlayerType2::operator=(const PlayerType2 &other)
 {
@@ -361,6 +384,7 @@ Player& PlayerType2::mostCards(vector<Player *> &players) {
 }
 
 PlayerType3::PlayerType3() {
+    setStrategy(3);
 }
 PlayerType3::PlayerType3(string newName, vector<Card *>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
@@ -368,14 +392,23 @@ PlayerType3::PlayerType3(string newName, vector<Card *>& newHand, int myPosition
         next=1;
     else
         next=0;
+    setStrategy(3);
     }
+PlayerType3::PlayerType3(Player &other)
+        :Player(other.getName(),other.getHand(),other.getPosition()){
+    if(getPosition()==0)
+        next=1;
+    else
+        next=0;
+    setStrategy(3);
+}
 PlayerType3& PlayerType3::operator=(const PlayerType3 &other)
 {
 
 }
 int PlayerType3::playTurn(vector<Player *> &players) {
     int cardAsk=highestVal();
-    if(numOfPlayer==0)
+    if(getNumOfPlayers()==0)
     {
        setNumOfPlayers(players.size());
 
@@ -391,9 +424,9 @@ int PlayerType3::highestVal() {
 
 int PlayerType3::whoNext() {
     if (next + 1 == getPosition()) {
-        if (next + 2 >= numOfPlayer) {
+        if (next + 2 >= getNumOfPlayers()) {
             next = 0;
-            return numOfPlayer-2;
+            return getNumOfPlayers()-2;
         }
         else {
             next = next + 2;
@@ -401,9 +434,9 @@ int PlayerType3::whoNext() {
         }
     }
     else{
-            if (next + 1 >= numOfPlayer) {
+            if (next + 1 >= getNumOfPlayers()) {
                 next = 0;
-                return numOfPlayer - 1;
+                return getNumOfPlayers() - 1;
             }
             else {
                 next = next + 1;
@@ -412,16 +445,9 @@ int PlayerType3::whoNext() {
         }
 
 }
-void PlayerType3::setNumOfPlayers(int numOfPlayers) {
-    numOfPlayer=numOfPlayers;
-}
-
-
-
-
-
 
 PlayerType4::PlayerType4() {
+    setStrategy(4);
 }
 PlayerType4::PlayerType4(string newName, vector<Card *>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
@@ -429,18 +455,26 @@ PlayerType4::PlayerType4(string newName, vector<Card *>& newHand, int myPosition
         next = 1;
     else
         next = 0;
+    setStrategy(4);
+
+}
+PlayerType4::PlayerType4(Player  &other)
+        :Player(other.getName(),other.getHand(),other.getPosition()){
+    if(getPosition()==0)
+        next=1;
+    else
+        next=0;
+    setStrategy(4);
 }
 PlayerType4& PlayerType4::operator=(const PlayerType4 &other)
 {
 
 }
-void PlayerType4::setNumOfPlayers(int numOfPlayers) {
-    numOfPlayer=numOfPlayers;
-}
+
 
 int PlayerType4::playTurn(vector<Player *> &players) {
     int cardAsk=lowestVal();
-    if(numOfPlayer==0)
+    if(getNumOfPlayers()==0)
     {
         setNumOfPlayers(players.size());
 
@@ -454,20 +488,20 @@ int PlayerType4::lowestVal() {
 }
 
 int PlayerType4::whoNext() {
-    if(numOfPlayer==0)
+    if(getNumOfPlayers()==0)
 
     if (next + 1 == getPosition()) {
-        if (next + 2 >= numOfPlayer) {
+        if (next + 2 >= getNumOfPlayers()) {
             next = 0;
-            return numOfPlayer - 1;
+            return getNumOfPlayers() - 1;
         } else {
             next = next + 2;
             return next - 2;
         }
     } else {
-        if (next + 1 >= numOfPlayer) {
+        if (next + 1 >= getNumOfPlayers()) {
             next = 0;
-            return numOfPlayer - 1;
+            return getNumOfPlayers() - 1;
         } else {
             next = next + 1;
             return next - 1;
