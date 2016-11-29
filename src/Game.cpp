@@ -112,12 +112,12 @@ Game::Game (Game& other)
 Game& Game::operator=(const Game& other){
     if(this!=&other)
     {
-        for (unsigned int i=0;i<players.size();i++)
+        /*for (unsigned int i=0;i<players.size();i++)
             delete (players[i]);
         for (unsigned int i=0; i<other.players.size();i++) {
             players.push_back(other.getPlayers()[i]);
-        }
-
+        }*/
+        players=other.getPlayers();
         deck=other.getDeck();
         verbal=other.getVerbal();
         NumOfPlayers=other.getNumOfPlayers();
