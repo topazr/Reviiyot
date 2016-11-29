@@ -59,7 +59,7 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
      unsigned long index = line.find(" ");
         // cout<<line;
      string name = line.substr(0, index);
-        cout<<name<<endl;
+        //cout<<name<<endl;
          while(line.at(index)==' '){
              index++;}
 

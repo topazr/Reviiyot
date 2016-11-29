@@ -14,8 +14,11 @@ Deck::Deck() {
 }
 
 Deck::Deck(string deck) {
+
     CardDeck=new queue<Card*>();
+
     while(deck.length()!=0){
+        cout<<CardDeck->size()<<endl;
         if(deck.at(0)>='0' && deck.at(0)<='9'){
             int num;
             string number="";
@@ -156,7 +159,7 @@ Deck& Deck::operator=(const Deck &&other)
     if (this!=&other)
     {
         for (unsigned int i=0;i<CardDeck->size();i++)
-            delete (&CardDeck[i]);
+            CardDeck->pop();
         for (unsigned int i=0; i<other.CardDeck->size();i++) {
 
             (*CardDeck).push(other.fetchCard());
@@ -210,7 +213,7 @@ string Deck::toString() {
 
     return ans;
 }
-vector<Card*>& Deck::dealCards(){
+vector<Card*>& Deck::dealCards() const{
     vector<Card*> *newHand=new vector<Card*>();
     for(int i=0; i<7; i++)
         newHand->push_back(fetchCard());
