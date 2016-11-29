@@ -13,7 +13,6 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
 
         ifstream inFile;
         inFile.open(configurationFile);
-        //cout<<inFile.fail();
        string line;
 
 
@@ -23,24 +22,18 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
      int count=0;
      while (count<4)
        {
-            //cout<<"KKKKK";
            getline(inFile,line);
            while (line.length()==0||(line.at(0)=='#' ))
            {
                getline(inFile,line);
            }
-            //cout<<line;
-
-
                 if (count==0){
 
                     verbal=line.at(0)-'0';
                    }
                else if (count==2)
                 {
-                   //cout<<"this: "<< line<<"!!!!!"<<endl;
                    deck=Deck(line);
-
 
                 }
 
@@ -49,7 +42,7 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
            }
 
 
-
+    queue<int>* temp=new queue<int>;
      int position=0;
     while (line.length()==0||(line.at(0)=='#' ))
     {
@@ -57,27 +50,33 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
     }
      while (!inFile.eof()) {
      unsigned long index = line.find(" ");
-        // cout<<line;
      string name = line.substr(0, index);
-        //cout<<name<<endl;
          while(line.at(index)==' '){
              index++;}
 
      int player=line.at(index)-'0';
-         cout<<player<<endl;
 
      if (player==1){
          players.push_back(new PlayerType1(name,deck.dealCards(),position));}
          if (player==2){
-             players.push_back(new PlayerType2(name,deck.dealCards(),position));}
-         if (player==3){
-             players.push_back(new PlayerType3(name,deck.dealCards(),position));}
+               players.push_back(new PlayerType2(name,deck.dealCards(),position));}
+         if (player==3) {
+             players.push_back(new PlayerType3(name, deck.dealCards(), position));
+             temp->push(position);
+         }
          if (player==4){
-             players.push_back(new PlayerType4(name,deck.dealCards(),position));}
+             players.push_back(new PlayerType4(name,deck.dealCards(),position));
+             temp->push(position);
+         }
      position++;
      getline(inFile,line);
  }
- NumOfPlayers=position+1;
+ NumOfPlayers=position;
+for (unsigned long i=0;i<players.size();i++)
+{
+
+
+}
 }
 
 Game::Game (Game&& other)
@@ -92,6 +91,14 @@ Game::Game (Game&& other)
 Game::Game (Game& other)
           {
 
+           /* for(int i=0;i<NumOfPlayers;i++)
+            {
+               delete players.at(i);
+            }
+              for(int i=0;i<other.getNumOfPlayers();i++)
+              {
+
+              }*/
             players=other.getPlayers();
             deck=other.getDeck();
             verbal=other.getVerbal();
@@ -144,8 +151,8 @@ void Game::printState()
     cout<<"Deck: " <<deck.toString()<<endl;
     for (unsigned long i=0;i<NumOfPlayers;i++)
     {
-        players.at(i)->printPlayer();
-        cout<<endl;
+        cout<<players.at(i)->printPlayer()<<endl;
+
     }
 }
 
@@ -165,12 +172,21 @@ void Game::play()
 {
     while (!Winner())
     {
+        printState();
         int turnToPlay=turn%NumOfPlayers;
 
         int PlayerDraw=players.at((unsigned long)turnToPlay)->playTurn(players);
-        for (int i=0;i<players.at((unsigned long)PlayerDraw)->getDraw();i++)
+
+        int numOfdraw=players.at((unsigned long)PlayerDraw)->getDraw();
+        players.at((unsigned long)PlayerDraw)->setDraw(0);
+        for (int i=0;deck.getNumberOfCards()>0&&numOfdraw!=0;i++)
         {
+
             players.at((unsigned long)PlayerDraw)->addCard(*deck.fetchCard());
+            numOfdraw--;
+
+
+
         }
 
         turn++;

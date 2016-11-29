@@ -21,8 +21,13 @@ Player::Player(string newName, vector<Card*>& newHand, int myPosition)
 }
 Player::Player(Player& other)
         : Player(other.getName(),other.getHand(),other.getPosition()){}
+Player& Player::operator=(const Player &other)
+{
+
+}
 
 string Player::getName() const {
+
     return name;
 }
 
@@ -33,8 +38,38 @@ int Player::getPosition() const {
 int Player::getDraw() const {
     return draw;
 }
+
 void Player::setDraw(int num)  {
     draw=num;
+}
+void Player::fourCards()
+{
+    int counter=1;
+    int index=0;
+    int value=getHand()[0]->getValue();
+    for(int i=1;i<getHand().size()&&counter<4;i++)
+    {
+        if(getHand()[i]->getValue()==value)
+        {
+            counter++;
+        }
+        else
+        {
+            value=getHand()[i]->getValue();
+            counter=1;
+            index=i;
+        }
+    }
+    if (counter==4)
+    {
+        for(int i=0;i<4;i++) {
+            auto it = getHand().begin();
+            advance(it, index);//make sure the iterator get to the right place
+            getHand().erase(it);
+        }
+    }
+
+
 }
 int Player::plays(int cardAsk, Player &playerAsk) {
     if(cardAsk<=1){
@@ -162,6 +197,8 @@ int Player::plays(int cardAsk, Player &playerAsk) {
         if(playerAsk.getDraw()==0)
             setDraw(1);
     }
+    this->fourCards();
+    playerAsk.fourCards();
     if(getDraw()!=0)
         return getPosition();
     else
@@ -169,9 +206,9 @@ int Player::plays(int cardAsk, Player &playerAsk) {
 }
 
 string Player::printPlayer(){
-    string ans("");
-    ans.append(getName()+":");
-    ans.append(Hand::toString());
+    string ans="";
+    ans=ans+name+": ";
+    ans=ans+toString();
     return ans;
 }
 
@@ -183,6 +220,10 @@ PlayerType1::PlayerType1() {
 }
 PlayerType1::PlayerType1(string newName, vector<Card*>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
+
+}
+PlayerType1& PlayerType1::operator=(const PlayerType1 &other)
+{
 
 }
 
@@ -248,44 +289,61 @@ PlayerType2::PlayerType2(string newName, vector<Card *>& newHand, int myPosition
         :Player(newName, newHand, myPosition){
 
 }
+PlayerType2 & PlayerType2::operator=(const PlayerType2 &other)
+{
+
+}
 
 int PlayerType2::playTurn(vector<Player *> & players){
     int cardAsk=hasLeast();
+    cout<<cardAsk;
     Player &playerAsk=mostCards(players);
+
     return plays(cardAsk, playerAsk);
 }
 
 int PlayerType2::hasLeast(){ // if hand is always sorted no need to check type of card
     int counter=0;
     int tempCard=-3;
-    int leastAmount=0;
+    int leastAmount=1;
     int whatCard=-3;
+    bool first=true;
     unsigned long size=getHand().size();
     if(size>0){
         tempCard=getHand().at(0)->getValue();
+        whatCard=tempCard;
         counter++;
     }
     for(unsigned long i=1; i<size; i++){
-        if(tempCard==getHand().at(i)->getValue())
-            counter++;
+        if(tempCard==getHand().at(i)->getValue()){
+            counter++;}
         else{
+            if (first)
+            {
+                leastAmount=counter;
+            }
             if(leastAmount>counter){
                 whatCard=tempCard;
                 leastAmount=counter;
                 counter=1;
                 tempCard=getHand().at(i)->getValue();
             }
-            else if(leastAmount==counter){
+            /*else if(leastAmount==counter){
                 whatCard = tempCard;
                 counter=1;
                 tempCard=getHand().at(i)->getValue();
-            }
+            }*/
             else{
                 counter=1;
                 tempCard=getHand().at(i)->getValue();
             }
         }
     }
+    if(leastAmount>counter){
+        whatCard=tempCard;
+    }
+    cout<<"this!!!!!!!!!!!!!!!"<<whatCard;
+    cout<<"this!!!!!!!!!!!!!!!"<<leastAmount;
     return whatCard;
 }
 
@@ -311,10 +369,19 @@ PlayerType3::PlayerType3(string newName, vector<Card *>& newHand, int myPosition
     else
         next=0;
     }
+PlayerType3& PlayerType3::operator=(const PlayerType3 &other)
+{
 
+}
 int PlayerType3::playTurn(vector<Player *> &players) {
     int cardAsk=highestVal();
+    if(numOfPlayer==0)
+    {
+       setNumOfPlayers(players.size());
+
+    }
     Player &playerAsk=*players.at((unsigned)whoNext());
+    cout<<playerAsk.getName()<<"!!!!!!!!!!!!";
     return plays(cardAsk, playerAsk);
 }
 int PlayerType3::highestVal() {
@@ -326,7 +393,7 @@ int PlayerType3::whoNext() {
     if (next + 1 == getPosition()) {
         if (next + 2 >= numOfPlayer) {
             next = 0;
-            return numOfPlayer-1;
+            return numOfPlayer-2;
         }
         else {
             next = next + 2;
@@ -359,9 +426,13 @@ PlayerType4::PlayerType4() {
 PlayerType4::PlayerType4(string newName, vector<Card *>& newHand, int myPosition)
         :Player(newName, newHand, myPosition){
     if(myPosition==0)
-        next=1;
+        next = 1;
     else
-        next=0;
+        next = 0;
+}
+PlayerType4& PlayerType4::operator=(const PlayerType4 &other)
+{
+
 }
 void PlayerType4::setNumOfPlayers(int numOfPlayers) {
     numOfPlayer=numOfPlayers;
@@ -369,6 +440,11 @@ void PlayerType4::setNumOfPlayers(int numOfPlayers) {
 
 int PlayerType4::playTurn(vector<Player *> &players) {
     int cardAsk=lowestVal();
+    if(numOfPlayer==0)
+    {
+        setNumOfPlayers(players.size());
+
+    }
     Player &playerAsk=*players.at(whoNext());
     return plays(cardAsk, playerAsk);
 }
@@ -378,6 +454,8 @@ int PlayerType4::lowestVal() {
 }
 
 int PlayerType4::whoNext() {
+    if(numOfPlayer==0)
+
     if (next + 1 == getPosition()) {
         if (next + 2 >= numOfPlayer) {
             next = 0;

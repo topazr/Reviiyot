@@ -14,7 +14,10 @@ Hand::Hand( Hand& other)  {
     pHand=other.pHand;
 }
 
-
+void Hand::setHand(vector<Card*>& other)
+        {
+               pHand=new vector<Card*>(other);
+        }
 Hand& Hand::operator=(const Hand &other)
 {
     if (this!=&other)
