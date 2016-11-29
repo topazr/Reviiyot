@@ -11,13 +11,13 @@ using namespace std;
 class Player : public Hand{
 private:
 	string name;
-    int position;
+	int position;
 	int draw;
 
 public:
 	Player();
 	Player(string, vector<Card*>&,int);
-    Player(Player &other);
+	Player(Player &other);
 	virtual Player& operator=(const Player &other);
 	string printPlayer();
 	~Player();
@@ -61,7 +61,7 @@ public:
 class PlayerType3 : public Player {  //For strategy 3
 //...
 private:
-    int next;//keeps next player to ask from - initialize to 0
+	int next;//keeps next player to ask from - initialize to 0
 	int numOfPlayer;
 	int highestVal();
 	int whoNext();

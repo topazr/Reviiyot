@@ -130,5 +130,3 @@ int NumericCard::getValue() {
 NumericCard::~NumericCard() {
 
 }
-
-

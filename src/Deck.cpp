@@ -99,11 +99,12 @@ Deck& Deck::operator=(const Deck &&other)
 {
     if (this!=&other)
     {
+
         for (unsigned int i=0;i<CardDeck->size();i++)
              CardDeck->pop();
         unsigned long size=other.CardDeck->size();
         for (unsigned int i=0; i<size;i++) {
-            CardDeck->pop();
+
             (*CardDeck).push(other.fetchCard());
         }
 
@@ -152,7 +153,7 @@ string Deck::toString() const{
 
     return ans;
 }
-vector<Card*>& Deck::dealCards() const{
+vector<Card*>& Deck::dealCards(){
     vector<Card*> *newHand=new vector<Card*>();
     for(int i=0; i<7; i++)
         newHand->push_back(fetchCard());
