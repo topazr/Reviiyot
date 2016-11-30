@@ -27,10 +27,11 @@ public:
   virtual ~Card();
     Card();
     Card(Shape);
-	Card(Card& other);
-	Card&operator=(Card& other);
-	Card&operator=(Card&& other);
 
+	Card(Card& other);
+	virtual Card&operator=(Card& other)=0;
+	virtual Card&operator=(Card&& other)=0;
+    void setShape(Shape);
     virtual int getValue()=0;
     Shape getShape();
     bool compare(string,string);
@@ -45,8 +46,8 @@ public:
     FigureCard();// default Constructor
     FigureCard(Figure, Shape);
 	FigureCard(FigureCard& other);
-	FigureCard&operator=(FigureCard& other);
-	FigureCard&operator=(FigureCard&& other);
+	FigureCard&operator=(Card& other);
+	FigureCard&operator=(Card&& other);
 	virtual int getValue() override ;
     ~FigureCard();
 };
@@ -58,6 +59,8 @@ public:
 	virtual string toString() override;
     NumericCard();// default Constructor
     NumericCard(int, Shape);
+    NumericCard&operator=(Card&);
+    NumericCard&operator=(Card&&);
     //NumericCard(NumericCard);
     virtual int getValue() override ;
     ~NumericCard();

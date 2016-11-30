@@ -23,7 +23,10 @@ Deck::Deck(string deck) {
             for(i=0; i<deck.length() && deck.at(i)!=' '; i++){
                 number=number+deck.at(i);
             }
-            deck=deck.substr(i+1);//cuts the first card from the string
+            if(i+1<=deck.length())
+                deck=deck.substr(i+1);//cuts the first card from the string
+            else
+                deck="";
             istringstream(number) >>num;
             if(number.at(number.length()-1)=='C')
                 CardDeck->push(new NumericCard(num,Club));
@@ -33,9 +36,9 @@ Deck::Deck(string deck) {
                 CardDeck->push(new NumericCard(num,Heart));
             else if(number.at(number.length()-1)=='S')
                 CardDeck->push(new NumericCard(num,Spade));
-
         }
         else {
+
             if (deck.at(0) == 'J') {
                 if (deck.at(1) == 'C')
                     CardDeck->push(new FigureCard(Jack, Club));
@@ -99,11 +102,12 @@ Deck& Deck::operator=(const Deck &&other)
 {
     if (this!=&other)
     {
+
         for (unsigned int i=0;i<CardDeck->size();i++)
              CardDeck->pop();
         unsigned long size=other.CardDeck->size();
         for (unsigned int i=0; i<size;i++) {
-            CardDeck->pop();
+
             (*CardDeck).push(other.fetchCard());
         }
 
@@ -152,7 +156,7 @@ string Deck::toString() const{
 
     return ans;
 }
-vector<Card*>& Deck::dealCards() const{
+vector<Card*>& Deck::dealCards(){
     vector<Card*> *newHand=new vector<Card*>();
     for(int i=0; i<7; i++)
         newHand->push_back(fetchCard());
