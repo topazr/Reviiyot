@@ -13,28 +13,27 @@ enum Shape {
 };
 
 enum Figure {
-	Jack=-2,
-	Queen=-1,
-	King=0,
-	Ace=1
+	Jack=-4,
+	Queen=-3,
+	King=-2,
+	Ace=-1
 };
 
 class Card {
 private:
   Shape shape;
+	int maxCard;
 public:
   virtual string toString() = 0; //Returns the string representation of the card "<value><shape>" exp: "12S" or "QD"
   virtual ~Card();
     Card();
     Card(Shape);
-
 	Card(Card& other);
 	virtual Card&operator=(Card& other)=0;
 	virtual Card&operator=(Card&& other)=0;
     void setShape(Shape);
     virtual int getValue()=0;
     Shape getShape();
-    bool compare(string,string);
 };
 
 class FigureCard : public Card {

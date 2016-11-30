@@ -8,15 +8,17 @@ Hand::Hand() {
 	}
 Hand::Hand(const vector<Card*>& myHand)
     :pHand(new vector<Card*>( myHand)){
-    sort(begin(*pHand), end(*pHand), compare1);
-}
+    sort(begin(*pHand), end(*pHand), compare);
+    }
 Hand::Hand( Hand& other)  {
     pHand=other.pHand;
+    sort(begin(*pHand), end(*pHand), compare);
 }
 
 void Hand::setHand(vector<Card*>& other)
         {
-               pHand=new vector<Card*>(other);
+            pHand=new vector<Card*>(other);
+            sort(begin(*pHand), end(*pHand), compare);
         }
 Hand& Hand::operator=(const Hand &other)
 {
@@ -45,52 +47,25 @@ const Hand& Hand::operator=( Hand &&other)
     return *this;
 
 }
-    bool Hand::compare1(Card* card1, Card* card2){//compares what card is higher
-    string str1=card1->toString();
-    string str2=card2->toString();
-    if(str1.at(0)=='K'){        //checks exceptions where lexicographically doesn't work
-        if(str2.at(0)=='K')
-            return str1 < str2;
-        else if(str2.at(0)=='A')
-            return true;
-        else
-            return false;
-    }
-    else if(str1.at(0)=='A'){
-        if(str2.at(0)=='A')
-            return str1 < str2;
-        else
-            return false;
-    }
-    else if(str2.at(0)=='K'){
-        if(str1.at(0)=='K')
-            return str1 < str2;
-        else if(str1.at(0)=='A')
-            return false;
-        else
-            return true;
-    }
-    else if(str2.at(0)=='A'){
-        if(str1.at(0)=='A')
-            return str1 < str2;
-        else
-            return true;
-    }
-    else if(str1.at(0)<=9 && str1.at(0)>=0 && (str2.at(0)<=9 && str2.at(0)>=0)) {
-        int num1;
-        istringstream(str1) >> num1;
-        int num2;
-        istringstream(str2) >> num2;
-        return num1 < num2; //checks lexicographically
-    }
-    else
-        return str1<str2;
+    bool Hand::compare(Card* card1, Card* card2){//compares what card is higher
+        int val1=card1->getValue();
+        int val2=card2->getValue();
+        if(val1==val2)
+            return card1->getShape()<card2->getShape();
+        else{
+            if((val1<0 & val2<0) || (val1>0 & val2>0))
+                return val1<val2;
+            else if(val1<0 & val2>0)
+                return false;
+            else if(val1>0 & val2<0)
+                return true;
+        }
 }
 
 
 bool Hand::addCard(Card &card) {
     pHand->push_back(&card);
-    sort(pHand->begin(), pHand->end(), compare1);
+    sort(pHand->begin(), pHand->end(), compare);
 
     return true;
 

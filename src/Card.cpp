@@ -26,33 +26,6 @@ Card& Card::operator=(Card &other)
 Shape Card::getShape() {
     return shape;
 }
-bool Card::compare(string str1, string str2) {//compares what card is higher
-    if (str1.at(0) == 'K') {        //checks exceptions where lexicographically doesn't work
-        if (str2.at(0) == 'K')
-            return str1 < str2;
-        else if (str2.at(0) == 'A')
-            return true;
-        else
-            return false;
-    } else if (str1.at(0) == 'A') {
-        if (str2.at(0) == 'A')
-            return str1 < str2;
-        else
-            return false;
-    } else if (str2.at(0) == 'K') {
-        if (str1.at(0) == 'K')
-            return str1 < str2;
-        else if (str1.at(0) == 'A')
-            return false;
-        else
-            return true;
-    } else if (str2.at(0) == 'A') {
-        if (str1.at(0) == 'A')
-            return str1 < str2;
-        else
-            return true;
-    }
-}
 
 void Card::setShape(Shape other) {
     shape=other;

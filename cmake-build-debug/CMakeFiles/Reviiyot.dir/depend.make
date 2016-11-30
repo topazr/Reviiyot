@@ -24,7 +24,10 @@ CMakeFiles/Reviiyot.dir/src/Player.cpp.o: ../include/Hand.h
 CMakeFiles/Reviiyot.dir/src/Player.cpp.o: ../include/Player.h
 CMakeFiles/Reviiyot.dir/src/Player.cpp.o: ../src/Player.cpp
 
-CMakeFiles/Reviiyot.dir/src/main.cpp.o: ../include/Card.h
-CMakeFiles/Reviiyot.dir/src/main.cpp.o: ../include/Deck.h
-CMakeFiles/Reviiyot.dir/src/main.cpp.o: ../src/main.cpp
+CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.o: ../include/Card.h
+CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.o: ../include/Deck.h
+CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.o: ../include/Game.h
+CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.o: ../include/Hand.h
+CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.o: ../include/Player.h
+CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.o: ../src/reviiyot.cpp
 

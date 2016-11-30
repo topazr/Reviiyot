@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -g
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/oshri/Desktop/Reviiyot/Reviiyot/include -I/home/oshri/Desktop/Reviiyot/Reviiyot/src 
+CXX_INCLUDES = -I/home/topaz/ClionProjects/Reviiyot/include -I/home/topaz/ClionProjects/Reviiyot/src 
 

@@ -1,1 +1,1 @@
-/usr/bin/c++    -std=c++11 -g   CMakeFiles/Reviiyot.dir/src/Card.cpp.o CMakeFiles/Reviiyot.dir/src/Deck.cpp.o CMakeFiles/Reviiyot.dir/src/Game.cpp.o CMakeFiles/Reviiyot.dir/src/Hand.cpp.o CMakeFiles/Reviiyot.dir/src/Player.cpp.o CMakeFiles/Reviiyot.dir/src/main.cpp.o  -o Reviiyot 
+/usr/bin/c++    -std=c++11 -g   CMakeFiles/Reviiyot.dir/src/Card.cpp.o CMakeFiles/Reviiyot.dir/src/Deck.cpp.o CMakeFiles/Reviiyot.dir/src/Game.cpp.o CMakeFiles/Reviiyot.dir/src/Hand.cpp.o CMakeFiles/Reviiyot.dir/src/Player.cpp.o CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.o  -o Reviiyot 

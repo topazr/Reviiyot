@@ -4,7 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Reviiyot.dir/src/Game.cpp.o"
   "CMakeFiles/Reviiyot.dir/src/Hand.cpp.o"
   "CMakeFiles/Reviiyot.dir/src/Player.cpp.o"
-  "CMakeFiles/Reviiyot.dir/src/main.cpp.o"
+  "CMakeFiles/Reviiyot.dir/src/reviiyot.cpp.o"
   "Reviiyot.pdb"
   "Reviiyot"
 )
