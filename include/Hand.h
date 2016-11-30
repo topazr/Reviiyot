@@ -10,10 +10,11 @@ using namespace std;
 class Hand {
 private:
 	vector<Card*> *pHand;// Declare here the collection of "Card *" of the hand
-    static bool compare1(Card*, Card*);
+
 
 public:
 	Hand();
+    static bool compare(Card*, Card*);
 	Hand(const vector<Card*>&);
     Hand(Hand &other);
 	Hand&operator=(const Hand& other);

@@ -33,24 +33,17 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
            getline(inFile,line);
 
        }
-
-
-
-    queue<int>* temp=new queue<int>;
-     int position=0;
+    int position=0;
     while (line.length()==0||(line.at(0)=='#' ))
     {
         getline(inFile,line);
     }
-
-     while (!inFile.eof()) {
-
+    while (!inFile.eof()) {
          unsigned long index = line.find(" ");
          string name = line.substr(0, index);
-            cout<<line<<endl;
-             while(line.at(index)==' '){
+         while(line.length()!=0 && line.at(index)==' '){
                  index++;
-             }
+         }
          int player=line.at(index)-'0';
          if (player==1){
              players.push_back(new PlayerType1(name,deck.dealCards(),position));
@@ -60,32 +53,17 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
          }
          else if (player==3) {
              players.push_back(new PlayerType3(name, deck.dealCards(), position));
-             temp->push(position);
          }
          else if (player==4){
              players.push_back(new PlayerType4(name,deck.dealCards(),position));
-             temp->push(position);
          }
          position++;
-         if(!inFile.eof()){
-             cout<<"!!!!!!!!!!!!!1";
-         getline(inFile,line);}
-         while (line.length()==0||(line.at(0)=='#' ))
-         {
-             getline(inFile,line);
-         }
+         getline(inFile,line);
+         while(!inFile.eof() && line.length()==0)
+             getline(inFile, line);
 
     }
-    cout<<"!!!!!!!!!!!";
-
     NumOfPlayers=position;
-    int size=temp->size();
-
-    for(unsigned long i=0; i<size; i++) {
-        players.at((unsigned long) temp->back())->setNumOfPlayers(NumOfPlayers);
-        temp->pop();
-    }
-cout<<3;
 }
 
 Game::Game (Game&& other)
@@ -144,7 +122,6 @@ Game& Game::operator=(const Game& other){
 
 }
 Game& Game::operator=(const Game&& other){
-    cout<<"hey ";
     if(this!=&other)
     {
         players.clear();
@@ -170,13 +147,13 @@ Game& Game::operator=(const Game&& other){
 }
 void Game::printState()
 {
-    cout<<"Turn "<<turn<<endl;
+    cout<<"Turn "<<turn+1<<endl;
     cout<<"Deck: " <<deck.toString()<<endl;
     for (unsigned long i=0;i<NumOfPlayers;i++)
     {
         cout<<players.at(i)->printPlayer()<<endl;
-
     }
+
 }
 
 bool Game::Winner()
@@ -195,28 +172,29 @@ void Game::play()
 {
     while (!Winner())
     {
+
         printState();
         int turnToPlay=turn%NumOfPlayers;
 
+
         int PlayerDraw=players.at((unsigned long)turnToPlay)->playTurn(players);
-
+        cout<<endl;
         int numOfdraw=players.at((unsigned long)PlayerDraw)->getDraw();
-        players.at((unsigned long)PlayerDraw)->setDraw(0);
-        for (int i=0;deck.getNumberOfCards()>0&&numOfdraw!=0;i++)
-        {
 
+        while(numOfdraw>0 & deck.getNumberOfCards()>0)
+        {
             players.at((unsigned long)PlayerDraw)->addCard(*deck.fetchCard());
             numOfdraw--;
-
-
-
+            players.at((unsigned long)PlayerDraw)->setDraw(numOfdraw);
         }
-
-        turn++;
+        players.at((unsigned long)turnToPlay)->fourCards();
+        players.at((unsigned long)PlayerDraw)->fourCards();
+        if(!Winner())
+            turn++;
     }
-    if (verbal==1) {
+   /* if (verbal==1) {
         printState();
-    }
+    }*/
 
 }
 void Game::printWinner()
@@ -230,7 +208,7 @@ void Game::printWinner()
             if (winner=="")
                 winner.append(players.at(i)->getName());
             else
-            {winner2.append("and"+players.at(i)->getName());}
+            {winner2.append(" and "+players.at(i)->getName());}
         }
     }
     if (winner2=="")
@@ -240,7 +218,7 @@ void Game::printWinner()
 }
 void Game::printNumberOfTurns()
 {
-    cout<<"Number of turns: "<<turn<<endl;
+    cout<<"Number of: "<<turn+1<<endl;
 }
 
 const vector <Player*>&  Game::getPlayers() const

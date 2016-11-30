@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <algorithm>
 #include "../include/Player.h"
 
 
@@ -50,38 +51,30 @@ void Player::setStrategy(int strat) {
 void Player::setDraw(int num)  {
     draw=num;
 }
-void Player::fourCards()
-{
-    int counter=1;
-    int index=0;
-    int value=getHand()[0]->getValue();
-    for(int i=1;i<getHand().size()&&counter<4;i++)
-    {
-        if(getHand()[i]->getValue()==value)
-        {
+void Player::fourCards() {
+    int counter = 1;
+    int value;
+    unsigned long index=0;
+    if(getHand().size()>0)
+        value = getHand().at(0)->getValue();
+    for (unsigned long i = 1; i < getHand().size(); i++) {
+        if (getHand().at(i)->getValue() == value) {
             counter++;
-        }
-        else
-        {
-            value=getHand()[i]->getValue();
-            counter=1;
+        } else {
+            value = getHand().at(i)->getValue();
+            counter = 1;
             index=i;
         }
-    }
-    if (counter==4)
-    {
-        for(int i=0;i<4;i++) {
-            auto it = getHand().begin();
-            advance(it, index);//make sure the iterator get to the right place
-            getHand().erase(it);
+        if (counter == 4) {
+            getHand().erase(getHand().begin()+index, getHand().begin()+index+4);
+            i=index;
         }
     }
-
 
 }
 int Player::plays(int cardAsk, Player &playerAsk) {
-    if(cardAsk<=1){
-        if(cardAsk==-2){
+    if(cardAsk<0){
+        if(cardAsk==-4){
             if(playerAsk.searchHand("JC")!=-1) {
                 addCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("JC")));
                 playerAsk.removeCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("JC")));
@@ -105,7 +98,7 @@ int Player::plays(int cardAsk, Player &playerAsk) {
             if(playerAsk.getDraw()==0)
                 setDraw(1);
         }
-        else if(cardAsk==-1){
+        else if(cardAsk==-3){
             if(playerAsk.searchHand("QC")!=-1) {
                 addCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("QC")));
                 playerAsk.removeCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("QC")));
@@ -129,7 +122,7 @@ int Player::plays(int cardAsk, Player &playerAsk) {
             if(playerAsk.getDraw()==0)
                 setDraw(1);
         }
-        else if(cardAsk==0){
+        else if(cardAsk==-2){
             if(playerAsk.searchHand("KC")!=-1) {
                 addCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("KC")));
                 playerAsk.removeCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("KC")));
@@ -153,7 +146,7 @@ int Player::plays(int cardAsk, Player &playerAsk) {
             if(playerAsk.getDraw()==0)
                 setDraw(1);
         }
-        else if(cardAsk==1){
+        else if(cardAsk==-1){
             if(playerAsk.searchHand("AC")!=-1) {
                 addCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("AC")));
                 playerAsk.removeCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("AC")));
@@ -174,14 +167,10 @@ int Player::plays(int cardAsk, Player &playerAsk) {
                 playerAsk.removeCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand("AS")));
                 playerAsk.setDraw(playerAsk.getDraw()+1);
             }
-            if(playerAsk.getDraw()==0)
-                setDraw(1);
         }
     }
     else{
-        stringstream ss;
-        ss << cardAsk;
-        string card=ss.str();
+        string card=to_string(cardAsk);
         if(playerAsk.searchHand(card+'C')!=-1) {
             addCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand(card+'C')));
             playerAsk.removeCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand(card+'C')));
@@ -202,15 +191,15 @@ int Player::plays(int cardAsk, Player &playerAsk) {
             playerAsk.removeCard(*playerAsk.getHand().at((unsigned long)playerAsk.searchHand(card+'S')));
             playerAsk.setDraw(playerAsk.getDraw()+1);
         }
-        if(playerAsk.getDraw()==0)
-            setDraw(1);
     }
-    this->fourCards();
-    playerAsk.fourCards();
-    if(getDraw()!=0)
+    if(playerAsk.getDraw()==0) {
+        setDraw(1);
         return getPosition();
-    else
+    }
+    else {
+        sort(playerAsk.getHand().begin(), playerAsk.getHand().end(), compare);
         return playerAsk.getPosition();
+    }
 }
 
 string Player::printPlayer(){
@@ -296,6 +285,17 @@ Player& PlayerType1::mostCards(vector<Player *> &players) {
 int PlayerType1::playTurn(vector<Player *> &players) {
     int cardAsk=hasMost();
     Player& playerAsk=mostCards(players);
+    cout<<getName()<<" asked "<<playerAsk.getName()<<" for the value ";
+    if(cardAsk>0)
+        cout<<cardAsk<<endl;
+    else if(cardAsk==-1)
+        cout<<"A"<<endl;
+    else if(cardAsk==-2)
+        cout<<"K"<<endl;
+    else if(cardAsk==-3)
+        cout<<"Q"<<endl;
+    else if(cardAsk==-4)
+        cout<<"J"<<endl;
     return plays(cardAsk, playerAsk);
     }
 
@@ -319,9 +319,18 @@ PlayerType2 & PlayerType2::operator=(const PlayerType2 &other)
 
 int PlayerType2::playTurn(vector<Player *> & players){
     int cardAsk=hasLeast();
-    cout<<cardAsk;
     Player &playerAsk=mostCards(players);
-
+    cout<<getName()<<" asked "<<playerAsk.getName()<<" for the value ";
+    if(cardAsk==-1)
+        cout<<"A"<<endl;
+    else if(cardAsk==-2)
+        cout<<"K"<<endl;
+    else if(cardAsk==-3)
+        cout<<"Q"<<endl;
+    else if(cardAsk==-4)
+        cout<<"J"<<endl;
+    else
+        cout<<cardAsk<<endl;
     return plays(cardAsk, playerAsk);
 }
 
@@ -339,23 +348,22 @@ int PlayerType2::hasLeast(){ // if hand is always sorted no need to check type o
     }
     for(unsigned long i=1; i<size; i++){
         if(tempCard==getHand().at(i)->getValue()){
-            counter++;}
+            counter++;
+        }
         else{
             if (first)
             {
                 leastAmount=counter;
+                counter=1;
+                tempCard=getHand().at(i)->getValue();
+                first=false;
             }
-            if(leastAmount>counter){
+            else if(leastAmount>counter){
                 whatCard=tempCard;
                 leastAmount=counter;
                 counter=1;
                 tempCard=getHand().at(i)->getValue();
             }
-            /*else if(leastAmount==counter){
-                whatCard = tempCard;
-                counter=1;
-                tempCard=getHand().at(i)->getValue();
-            }*/
             else{
                 counter=1;
                 tempCard=getHand().at(i)->getValue();
@@ -365,8 +373,6 @@ int PlayerType2::hasLeast(){ // if hand is always sorted no need to check type o
     if(leastAmount>counter){
         whatCard=tempCard;
     }
-    cout<<"this!!!!!!!!!!!!!!!"<<whatCard;
-    cout<<"this!!!!!!!!!!!!!!!"<<leastAmount;
     return whatCard;
 }
 
@@ -411,10 +417,19 @@ int PlayerType3::playTurn(vector<Player *> &players) {
     if(getNumOfPlayers()==0)
     {
        setNumOfPlayers(players.size());
-
     }
     Player &playerAsk=*players.at((unsigned)whoNext());
-    cout<<playerAsk.getName()<<"!!!!!!!!!!!!";
+    cout<<getName()<<" asked "<<playerAsk.getName()<<" for the value ";
+    if(cardAsk==-1)
+        cout<<"A"<<endl;
+    else if(cardAsk==-2)
+        cout<<"K"<<endl;
+    else if(cardAsk==-3)
+        cout<<"Q"<<endl;
+    else if(cardAsk==-4)
+        cout<<"J"<<endl;
+    else
+        cout<<cardAsk<<endl;
     return plays(cardAsk, playerAsk);
 }
 int PlayerType3::highestVal() {
@@ -423,27 +438,16 @@ int PlayerType3::highestVal() {
 }
 
 int PlayerType3::whoNext() {
-    if (next + 1 == getPosition()) {
-        if (next + 2 >= getNumOfPlayers()) {
-            next = 0;
-            return getNumOfPlayers()-2;
-        }
-        else {
-            next = next + 2;
-            return next - 2;
-        }
+    if(next!=getPosition()){
+        int ans=next;
+        next=(next+1)%getNumOfPlayers();
+        return ans;
     }
     else{
-            if (next + 1 >= getNumOfPlayers()) {
-                next = 0;
-                return getNumOfPlayers() - 1;
-            }
-            else {
-                next = next + 1;
-                return next - 1;
-            }
-        }
-
+        int ans=(next+1)%getNumOfPlayers();
+        next=(next+2)%getNumOfPlayers();
+        return ans;
+    }
 }
 
 PlayerType4::PlayerType4() {
@@ -480,6 +484,17 @@ int PlayerType4::playTurn(vector<Player *> &players) {
 
     }
     Player &playerAsk=*players.at(whoNext());
+    cout<<getName()<<" asked "<<playerAsk.getName()<<" for the value ";
+    if(cardAsk==-1)
+        cout<<"A"<<endl;
+    else if(cardAsk==-2)
+        cout<<"K"<<endl;
+    else if(cardAsk==-3)
+        cout<<"Q"<<endl;
+    else if(cardAsk==-4)
+        cout<<"J"<<endl;
+    else
+        cout<<cardAsk<<endl;
     return plays(cardAsk, playerAsk);
 }
 
@@ -488,25 +503,17 @@ int PlayerType4::lowestVal() {
 }
 
 int PlayerType4::whoNext() {
-    if(getNumOfPlayers()==0)
-
-    if (next + 1 == getPosition()) {
-        if (next + 2 >= getNumOfPlayers()) {
-            next = 0;
-            return getNumOfPlayers() - 1;
-        } else {
-            next = next + 2;
-            return next - 2;
-        }
-    } else {
-        if (next + 1 >= getNumOfPlayers()) {
-            next = 0;
-            return getNumOfPlayers() - 1;
-        } else {
-            next = next + 1;
-            return next - 1;
-        }
+    if(next!=getPosition()){
+        int ans=next;
+        next=(next+1)%getNumOfPlayers();
+        return ans;
     }
+    else{
+        int ans=(next+1)%getNumOfPlayers();
+        next=(next+2)%getNumOfPlayers();
+        return ans;
+    }
+
 }
 
 

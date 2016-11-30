@@ -15,4 +15,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/oshri/Desktop/Reviiyot/cmake-build-default
+-- Build files have been written to: /home/topaz/ClionProjects/Reviiyot/cmake-build-default
