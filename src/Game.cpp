@@ -44,9 +44,10 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
     }
 
      while (!inFile.eof()) {
+
          unsigned long index = line.find(" ");
          string name = line.substr(0, index);
-
+            cout<<line<<endl;
              while(line.at(index)==' '){
                  index++;
              }
@@ -66,10 +67,16 @@ Game::Game(char* configurationFile): NumOfPlayers(0),turn(0) {
              temp->push(position);
          }
          position++;
-
-         getline(inFile,line);
+         if(!inFile.eof()){
+             cout<<"!!!!!!!!!!!!!1";
+         getline(inFile,line);}
+         while (line.length()==0||(line.at(0)=='#' ))
+         {
+             getline(inFile,line);
+         }
 
     }
+    cout<<"!!!!!!!!!!!";
 
     NumOfPlayers=position;
     int size=temp->size();

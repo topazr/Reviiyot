@@ -10,11 +10,11 @@ int main(int argc, char **argv) {
     char* configurationFile = argv[1];
 
 	Game game = Game(configurationFile);
-	game.init();
+	/*game.init();
  	Game initializedGame=game;
-    cout<<game.getPlayers().at(0)->getDraw();
-    cout<<initializedGame.getPlayers().at(0)->getDraw();
- 	game.play();
+    //cout<<game.getPlayers().at(0)->getDraw();
+    //cout<<initializedGame.getPlayers().at(0)->getDraw();
+ 	//game.play();
 
 	cout << std::endl;
  	game.printWinner();
@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
   	initializedGame.printState();
 	cout<<"----------"<<endl;
 	cout<<"Final State:"<<endl;
-	game.printState();
+	game.printState();*/
 	return 0;
 }
 
